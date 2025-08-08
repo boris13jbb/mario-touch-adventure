@@ -1,0 +1,153 @@
+name: Build APK - Mario Touch Adventure
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.5'
+        channel: 'stable'
+    
+    - name: Install dependencies
+      run: flutter pub get
+    
+    - name: Analyze project source
+      run: flutter analyze
+    
+    - name: Run tests
+      run: flutter test
+    
+    - name: Build APK
+      run: flutter build apk --release
+    
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mario-touch-adventure-apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+        retention-days: 30
+    
+    - name: Create Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: build/app/outputs/flutter-apk/app-release.apk
+        tag_name: v${{ github.run_number }}
+        name: Mario Touch Adventure v${{ github.run_number }}
+        body: |
+          🎮 **Mario Touch Adventure - Versión Mejorada**
+          
+          ### ✨ **Nuevas Características:**
+          
+          #### 🎯 **Mecánicas Profesionales**
+          - **Física Realista**: Gravedad, saltos y colisiones realistas
+          - **Movimiento Fluido**: Aceleración y fricción naturales
+          - **Combate Avanzado**: Sistema de proyectiles con trayectorias
+          - **Enemigos Inteligentes**: IA con patrones de movimiento
+          
+          #### 🎨 **UI/UX Profesional**
+          - **Animaciones Suaves**: Transiciones y micro-interacciones
+          - **Diseño Responsivo**: Optimizado para todas las pantallas
+          - **Retroalimentación Háptica**: Respuestas táctiles
+          - **Efectos Visuales**: Partículas y sacudida de pantalla
+          
+          #### 🔊 **Audio Inmersivo**
+          - **Música Dinámica**: Banda sonora adaptativa
+          - **Efectos Profesionales**: Sonidos para todos los eventos
+          - **Controles de Volumen**: Ajustes independientes
+          - **Persistencia**: Configuraciones guardadas
+          
+          #### 💾 **Sistema Avanzado**
+          - **Guardado Completo**: Progreso persistente
+          - **Logros Desbloqueables**: Sistema de logros
+          - **Estadísticas Detalladas**: Análisis de gameplay
+          - **Configuraciones Personalizables**: Preferencias del usuario
+          
+          ### 🎮 **Controles del Juego**
+          
+          #### Controles Táctiles:
+          - **⬅️ ➡️ Movimiento**: Botones izquierda/derecha
+          - **⬆️ Salto**: Botón de salto
+          - **⚔️ Ataque**: Botón de ataque
+          - **⏸️ Pausa**: Botón de pausa en HUD
+          
+          ### 🏆 **Logros Disponibles**
+          
+          - **Primeros Pasos**: Completar el primer nivel
+          - **Colector de Monedas**: Recolectar 100 monedas
+          - **Cazador de Enemigos**: Derrotar 50 enemigos
+          - **Corredor Veloz**: Completar 5 niveles en menos de 10 minutos
+          - **Jugador Perfecto**: Completar un nivel sin perder vidas
+          - **Maestro del Juego**: Llegar al nivel 10
+          
+          ### 📊 **Estadísticas del Juego**
+          
+          El juego rastrea:
+          - **Tiempo Total de Juego**: Duración acumulativa
+          - **Monedas Recolectadas**: Total de monedas
+          - **Enemigos Derrotados**: Número de enemigos eliminados
+          - **Niveles Completados**: Progreso a través del juego
+          - **Niveles Perfectos**: Niveles completados sin perder vidas
+          
+          ### 🔧 **Configuraciones Disponibles**
+          
+          #### Configuraciones del Juego:
+          - **Efectos de Sonido**: Activar/desactivar sonidos individuales
+          - **Música de Fondo**: Controlar reproducción de música
+          - **Vibración**: Activar/desactivar retroalimentación háptica
+          - **Velocidad del Juego**: Ajustar velocidad (0.5x - 2.0x)
+          
+          #### Configuraciones de Rendimiento:
+          - **Efectos de Partículas**: Activar/desactivar efectos visuales
+          - **Sacudida de Pantalla**: Controlar intensidad
+          - **Calidad de Animación**: Ajustar suavidad
+          
+          ### 📱 **Instalación en Android**
+          
+          #### Paso 1: Habilitar Fuentes Desconocidas
+          1. Ve a **Configuración**
+          2. Ve a **Seguridad**
+          3. Activa **Fuentes desconocidas**
+          
+          #### Paso 2: Instalar APK
+          1. Descarga el APK
+          2. Toca en el archivo descargado
+          3. Sigue las instrucciones de instalación
+          
+          #### Paso 3: Disfrutar del Juego
+          1. Abre la aplicación
+          2. ¡Juega Mario Touch Adventure Mejorado!
+          
+          ### 🚀 **Mejoras Implementadas**
+          
+          ✅ **Motor de Física Realista**
+          ✅ **Sistema de Audio Profesional**  
+          ✅ **UI/UX Mejorado con Animaciones**
+          ✅ **Sistema de Guardado Avanzado**
+          ✅ **Controles Táctiles con Haptic Feedback**
+          ✅ **Efectos Visuales y Partículas**
+          ✅ **Sistema de Logros y Estadísticas**
+          ✅ **Configuraciones Personalizables**
+          ✅ **Optimización de Rendimiento**
+          ✅ **Documentación Profesional**
+          
+          **¡El juego ahora es completamente profesional y realista!** 🚀
+          
+          ---
+          
+          **¡Disfruta del juego mejorado!** 🎮✨
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
