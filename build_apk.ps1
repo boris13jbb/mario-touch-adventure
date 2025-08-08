@@ -9,7 +9,7 @@ Write-Host ""
 # Función para verificar si Flutter está instalado
 function Test-FlutterInstalled {
     try {
-        $flutterVersion = flutter --version 2>$null
+        $null = flutter --version 2>$null
         return $true
     }
     catch {
@@ -23,7 +23,6 @@ function Install-Flutter {
     
     $flutterUrl = "https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.24.5-stable.zip"
     $flutterZip = "flutter.zip"
-    $flutterPath = "C:\flutter"
     
     Write-Host "Descargando Flutter..." -ForegroundColor Green
     try {
@@ -65,7 +64,7 @@ function Install-Flutter {
 }
 
 # Función para generar el APK
-function Build-APK {
+function New-APK {
     Write-Host "[2/5] Verificando dependencias..." -ForegroundColor Yellow
     try {
         flutter doctor
@@ -125,7 +124,7 @@ else {
 }
 
 # Generar APK
-if (Build-APK) {
+if (New-APK) {
     Write-Host ""
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host "¡APK GENERADO EXITOSAMENTE!" -ForegroundColor Green
