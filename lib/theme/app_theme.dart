@@ -90,8 +90,6 @@ class AppTheme {
       onError: onErrorLight,
       errorContainer: errorLight,
       onErrorContainer: onErrorLight,
-      surface: backgroundLight,
-      onSurface: onBackgroundLight,
       surface: surfaceLight,
       onSurface: onSurfaceLight,
       surfaceContainerHighest: surfaceLight,
@@ -213,7 +211,7 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
     ),
-    cardTheme: const CardTheme(
+    cardTheme: CardTheme(
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -302,8 +300,6 @@ class AppTheme {
       onError: onErrorDark,
       errorContainer: errorDark,
       onErrorContainer: onErrorDark,
-      surface: backgroundDark,
-      onSurface: onBackgroundDark,
       surface: surfaceDark,
       onSurface: onSurfaceDark,
       surfaceContainerHighest: surfaceDark,
@@ -425,7 +421,7 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
     ),
-    cardTheme: const CardTheme(
+    cardTheme: CardTheme(
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
