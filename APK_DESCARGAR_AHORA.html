@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Mario Touch Adventure - Descargar APK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .method-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .method-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .method-card h3::before {
+            content: "🚀";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .method-card.recommended {
+            border-left-color: #ff6b6b;
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+        }
+
+        .method-card.recommended h3 {
+            color: #ff6b6b;
+        }
+
+        .method-card.recommended h3::before {
+            content: "⭐";
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn.github {
+            background: linear-gradient(135deg, #24292e, #586069);
+        }
+
+        .btn.codemagic {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #667eea;
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .difficulty.easy {
+            background: #48bb78;
+            color: white;
+        }
+
+        .difficulty.medium {
+            background: #ed8936;
+            color: white;
+        }
+
+        .difficulty.hard {
+            background: #f56565;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Mario Touch Adventure</h1>
+            <p>¡Descarga el APK del juego mejorado con física realista y efectos profesionales!</p>
+        </div>
+
+        <div class="content">
+            <div class="method-card recommended">
+                <h3>Método Recomendado: GitHub Actions <span class="difficulty easy">FÁCIL</span></h3>
+                <p>El método más confiable y automático para generar el APK.</p>
+                <ol class="steps">
+                    <li>Ve a <a href="https://github.com" target="_blank" class="btn github">GitHub.com</a> y crea una cuenta si no tienes una</li>
+                    <li>Crea un nuevo repositorio llamado <code>mario-touch-adventure</code></li>
+                    <li>Sube el código del proyecto usando estos comandos:</li>
+                </ol>
+                <div class="code-block">
+git remote add origin https://github.com/TU_USUARIO/mario-touch-adventure.git<br>
+git push -u origin master
+                </div>
+                <ol class="steps">
+                    <li>Ve a la pestaña <strong>Actions</strong> en tu repositorio</li>
+                    <li>El workflow se ejecutará automáticamente</li>
+                    <li>Descarga el APK desde <strong>Artifacts</strong></li>
+                </ol>
+                <a href="https://github.com" target="_blank" class="btn github">Ir a GitHub</a>
+            </div>
+
+            <div class="method-card">
+                <h3>Método Alternativo: Codemagic <span class="difficulty medium">MEDIO</span></h3>
+                <p>Servicio de CI/CD especializado en Flutter.</p>
+                <ol class="steps">
+                    <li>Ve a <a href="https://codemagic.io" target="_blank" class="btn codemagic">Codemagic.io</a></li>
+                    <li>Conecta tu repositorio de GitHub</li>
+                    <li>Selecciona el proyecto <code>mario-touch-adventure</code></li>
+                    <li>Usa la configuración automática de Flutter</li>
+                    <li>Ejecuta el build y descarga el APK</li>
+                </ol>
+                <a href="https://codemagic.io" target="_blank" class="btn codemagic">Ir a Codemagic</a>
+            </div>
+
+            <div class="method-card">
+                <h3>Método Local: Android Studio <span class="difficulty hard">AVANZADO</span></h3>
+                <p>Para desarrolladores con Android Studio instalado.</p>
+                <ol class="steps">
+                    <li>Descarga e instala <a href="https://developer.android.com/studio" target="_blank">Android Studio</a></li>
+                    <li>Abre el proyecto <code>mario_touch_adventure</code></li>
+                    <li>Ve a <strong>Build > Build Bundle(s) / APK(s) > Build APK(s)</strong></li>
+                    <li>El APK estará en <code>build/app/outputs/flutter-apk/</code></li>
+                </ol>
+                <a href="https://developer.android.com/studio" target="_blank" class="btn">Descargar Android Studio</a>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h4>🎯 Mecánicas Profesionales</h4>
+                    <ul class="feature-list">
+                        <li>Física Realista</li>
+                        <li>Movimiento Fluido</li>
+                        <li>Combate Avanzado</li>
+                        <li>Enemigos Inteligentes</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎨 UI/UX Profesional</h4>
+                    <ul class="feature-list">
+                        <li>Animaciones Suaves</li>
+                        <li>Diseño Responsivo</li>
+                        <li>Haptic Feedback</li>
+                        <li>Efectos Visuales</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔊 Audio Inmersivo</h4>
+                    <ul class="feature-list">
+                        <li>Música Dinámica</li>
+                        <li>Efectos Profesionales</li>
+                        <li>Controles de Volumen</li>
+                        <li>Persistencia</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💾 Sistema Avanzado</h4>
+                    <ul class="feature-list">
+                        <li>Guardado Completo</li>
+                        <li>Logros Desbloqueables</li>
+                        <li>Estadísticas Detalladas</li>
+                        <li>Configuraciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🎮 ¡Disfruta del juego mejorado!</h3>
+            <p>El juego ahora es completamente profesional y realista con todas las mejoras implementadas.</p>
+            <p><strong>Controles:</strong> ⬅️➡️ Movimiento | ⬆️ Salto | ⚔️ Ataque | ⏸️ Pausa</p>
+        </div>
+    </div>
+
+    <script>
+        // Animación suave al hacer scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efecto de hover en las tarjetas
+        document.querySelectorAll('.method-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Mostrar mensaje de éxito
+        console.log('🎮 Mario Touch Adventure - APK Download Page Loaded!');
+        console.log('📱 Choose your preferred method to download the APK');
+    </script>
+</body>
+</html>
