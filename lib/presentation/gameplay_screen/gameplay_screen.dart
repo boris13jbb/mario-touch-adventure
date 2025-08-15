@@ -23,7 +23,7 @@ class _GameplayScreenState extends State<GameplayScreen>
   // Game state variables
   int _lives = 3;
   int _currentLevel = 1;
-  int _score = 0;
+  // int _score = 0; // Unused field - commented out
   bool _isPaused = false;
   bool _isGameActive = true;
 
@@ -188,7 +188,7 @@ class _GameplayScreenState extends State<GameplayScreen>
     setState(() {
       coin['collected'] = true;
       _coins = _coins.where((c) => c['id'] != coin['id']).toList();
-      _score += 10;
+      // _score += 10;
     });
 
     // Haptic feedback for coin collection
@@ -199,7 +199,7 @@ class _GameplayScreenState extends State<GameplayScreen>
     setState(() {
       enemy['alive'] = false;
       _enemies = _enemies.where((e) => e['id'] != enemy['id']).toList();
-      _score += 25;
+      // _score += 25;
     });
 
     // Haptic feedback for enemy defeat
@@ -222,7 +222,7 @@ class _GameplayScreenState extends State<GameplayScreen>
     setState(() {
       _lives = 3;
       _currentLevel = 1;
-      _score = 0;
+      // _score = 0;
       _isPaused = false;
       _isGameActive = true;
       _playerDirection = '';
