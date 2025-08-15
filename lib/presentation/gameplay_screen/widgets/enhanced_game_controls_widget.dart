@@ -37,7 +37,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
   late AnimationController _attackButtonController;
   
   // Haptic feedback
-  final HapticFeedback _hapticFeedback = HapticFeedback();
+  // final HapticFeedback _hapticFeedback = HapticFeedback();
   
   @override
   void initState() {
@@ -123,7 +123,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
                   onTapDown: () => _handleJumpPress(),
                   onTapUp: () => _handleJumpRelease(),
                   onTapCancel: () => _handleJumpRelease(),
-                  color: AppTheme.successColor,
+                  color: AppTheme.successLight,
                 ),
                 SizedBox(width: 3.w),
                 _buildActionButton(
@@ -133,7 +133,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
                   onTapDown: () => _handleAttackPress(),
                   onTapUp: () => _handleAttackRelease(),
                   onTapCancel: () => _handleAttackRelease(),
-                  color: AppTheme.warningColor,
+                  color: AppTheme.warningLight,
                 ),
               ],
             ),
@@ -172,8 +172,8 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
               height: 12.w,
               decoration: BoxDecoration(
                 color: isPressed 
-                    ? AppTheme.primaryColor.withOpacity(0.8)
-                    : AppTheme.primaryColor.withOpacity(0.6),
+                    ? AppTheme.primaryLight.withOpacity(0.8)
+                    : AppTheme.primaryLight.withOpacity(0.6),
                 borderRadius: BorderRadius.circular(12.w / 2),
                 boxShadow: [
                   BoxShadow(
@@ -281,7 +281,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
       });
       _leftButtonController.forward();
       widget.onMovement('left');
-      _hapticFeedback.lightImpact();
+      HapticFeedback.selectionClick();
       AudioManager().playButtonClickSound();
     }
   }
@@ -303,7 +303,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
       });
       _rightButtonController.forward();
       widget.onMovement('right');
-      _hapticFeedback.lightImpact();
+      HapticFeedback.selectionClick();
       AudioManager().playButtonClickSound();
     }
   }
@@ -325,7 +325,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
       });
       _jumpButtonController.forward();
       widget.onJump();
-      _hapticFeedback.mediumImpact();
+      HapticFeedback.mediumImpact();
       AudioManager().playButtonClickSound();
     }
   }
@@ -346,7 +346,7 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
       });
       _attackButtonController.forward();
       widget.onAttack();
-      _hapticFeedback.heavyImpact();
+      HapticFeedback.heavyImpact();
       AudioManager().playButtonClickSound();
     }
   }

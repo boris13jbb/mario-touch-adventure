@@ -136,7 +136,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                         boxShadow: [
                           BoxShadow(
                             color: AppTheme.lightTheme.colorScheme.shadow
-                                .withValues(alpha: 0.1),
+                                .withAlpha((0.1 * 255).round()),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -155,7 +155,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                               height: 10.w,
                               decoration: BoxDecoration(
                                 color: AppTheme.lightTheme.colorScheme.primary
-                                    .withValues(alpha: 0.1),
+                                    .withAlpha((0.1 * 255).round()),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Center(
@@ -240,15 +240,15 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                           end: Alignment.bottomRight,
                           colors: [
                             AppTheme.lightTheme.colorScheme.primary
-                                .withValues(alpha: 0.1),
+                                .withAlpha((0.1 * 255).round()),
                             AppTheme.lightTheme.colorScheme.secondary
-                                .withValues(alpha: 0.1),
+                                .withAlpha((0.1 * 255).round()),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: AppTheme.lightTheme.colorScheme.primary
-                              .withValues(alpha: 0.3),
+                              .withAlpha((0.3 * 255).round()),
                           width: 2,
                         ),
                       ),
@@ -271,7 +271,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                                       BoxShadow(
                                         color: AppTheme
                                             .lightTheme.colorScheme.primary
-                                            .withValues(alpha: 0.3),
+                                            .withAlpha((0.3 * 255).round()),
                                         blurRadius: 12,
                                         spreadRadius: 4,
                                       ),
@@ -328,7 +328,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: AppTheme.lightTheme.colorScheme.outline
-                              .withValues(alpha: 0.3),
+                              .withAlpha((0.3 * 255).round()),
                         ),
                       ),
                       child: Column(
@@ -356,7 +356,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                                     decoration: BoxDecoration(
                                       color: AppTheme
                                           .lightTheme.colorScheme.primary
-                                          .withValues(alpha: 0.1),
+                                          .withAlpha((0.1 * 255).round()),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Column(
@@ -393,7 +393,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                                     decoration: BoxDecoration(
                                       color: AppTheme
                                           .lightTheme.colorScheme.secondary
-                                          .withValues(alpha: 0.1),
+                                          .withAlpha((0.1 * 255).round()),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Column(
@@ -430,7 +430,7 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                                     decoration: BoxDecoration(
                                       color: AppTheme
                                           .lightTheme.colorScheme.tertiary
-                                          .withValues(alpha: 0.1),
+                                          .withAlpha((0.1 * 255).round()),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Column(
@@ -487,13 +487,13 @@ class _InstructionsScreenState extends State<InstructionsScreen>
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
                           color: AppTheme.lightTheme.colorScheme.primary
-                              .withValues(alpha: 0.3),
+                              .withAlpha((0.3 * 255).round()),
                           width: 2,
                         ),
                         boxShadow: [
                           BoxShadow(
                             color: AppTheme.lightTheme.colorScheme.shadow
-                                .withValues(alpha: 0.1),
+                                .withAlpha((0.1 * 255).round()),
                             blurRadius: 8,
                             offset: const Offset(0, 4),
                           ),

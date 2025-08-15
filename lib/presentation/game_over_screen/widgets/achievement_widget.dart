@@ -76,15 +76,15 @@ class _AchievementWidgetState extends State<AchievementWidget>
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppTheme.accentColor.withValues(alpha: 0.2),
-                    AppTheme.successColor.withValues(alpha: 0.2),
+                    AppTheme.accentLight.withAlpha((0.2 * 255).round()),
+                    AppTheme.successLight.withAlpha((0.2 * 255).round()),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
                 borderRadius: BorderRadius.circular(3.w),
                 border: Border.all(
-                  color: AppTheme.accentColor.withValues(alpha: 0.5),
+                  color: AppTheme.accentLight.withAlpha((0.5 * 255).round()),
                   width: 2,
                 ),
               ),
@@ -95,7 +95,7 @@ class _AchievementWidgetState extends State<AchievementWidget>
                     children: [
                       CustomIconWidget(
                         iconName: 'emoji_events',
-                        color: AppTheme.accentColor,
+                        color: AppTheme.accentLight,
                         size: 6.w,
                       ),
                       SizedBox(width: 2.w),
@@ -103,7 +103,7 @@ class _AchievementWidgetState extends State<AchievementWidget>
                         '¡Logros Desbloqueados!',
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  color: AppTheme.accentColor,
+                                  color: AppTheme.accentLight,
                                   fontWeight: FontWeight.w700,
                                 ),
                       ),
@@ -117,7 +117,7 @@ class _AchievementWidgetState extends State<AchievementWidget>
                               children: [
                                 CustomIconWidget(
                                   iconName: 'star',
-                                  color: AppTheme.accentColor,
+                                  color: AppTheme.accentLight,
                                   size: 4.w,
                                 ),
                                 SizedBox(width: 2.w),

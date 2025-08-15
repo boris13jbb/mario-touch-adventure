@@ -117,10 +117,10 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
       height: 20.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -133,7 +133,7 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -175,7 +175,7 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFFFD700).withValues(alpha: 0.3),
+                          color: const Color(0xFFFFD700).withAlpha((0.3 * 255).round()),
                           blurRadius: 8,
                           spreadRadius: 2,
                         ),
@@ -223,10 +223,10 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
       height: 20.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -239,7 +239,7 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -338,10 +338,10 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
       height: 20.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -354,7 +354,7 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -442,13 +442,13 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
         color: AppTheme.lightTheme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.primary.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.primary.withAlpha((0.3 * 255).round()),
           width: 2,
         ),
         boxShadow: [
           BoxShadow(
             color:
-                AppTheme.lightTheme.colorScheme.shadow.withValues(alpha: 0.1),
+                AppTheme.lightTheme.colorScheme.shadow.withAlpha((0.1 * 255).round()),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -535,11 +535,11 @@ class _GameplayMechanicsWidgetState extends State<GameplayMechanicsWidget>
             padding: EdgeInsets.all(3.w),
             decoration: BoxDecoration(
               color: (_mechanics[_selectedMechanic]['color'] as Color)
-                  .withValues(alpha: 0.1),
+                  .withAlpha((0.1 * 255).round()),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: (_mechanics[_selectedMechanic]['color'] as Color)
-                    .withValues(alpha: 0.3),
+                    .withAlpha((0.3 * 255).round()),
               ),
             ),
             child: Text(

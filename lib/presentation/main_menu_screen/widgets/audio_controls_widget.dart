@@ -33,11 +33,11 @@ class _AudioControlsWidgetState extends State<AudioControlsWidget> {
             decoration: BoxDecoration(
               color: _isMusicEnabled
                   ? AppTheme.lightTheme.colorScheme.primary
-                  : Colors.grey.withValues(alpha: 0.7),
+                  : Colors.grey.withAlpha((0.7 * 255).round()),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.2),
+                  color: Colors.black.withAlpha((0.2 * 255).round()),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),
@@ -65,11 +65,11 @@ class _AudioControlsWidgetState extends State<AudioControlsWidget> {
             decoration: BoxDecoration(
               color: _isSoundEnabled
                   ? AppTheme.lightTheme.colorScheme.secondary
-                  : Colors.grey.withValues(alpha: 0.7),
+                  : Colors.grey.withAlpha((0.7 * 255).round()),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.2),
+                  color: Colors.black.withAlpha((0.2 * 255).round()),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),

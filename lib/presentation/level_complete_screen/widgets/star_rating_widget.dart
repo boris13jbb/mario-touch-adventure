@@ -138,8 +138,8 @@ class _StarRatingWidgetState extends State<StarRatingWidget>
                             boxShadow: isEarned
                                 ? [
                                     BoxShadow(
-                                      color: AppTheme.accentColor
-                                          .withValues(alpha: glow * 0.6),
+                                      color: AppTheme.accentLight
+                                          .withAlpha((glow * 0.6 * 255).round()),
                                       blurRadius: 20,
                                       spreadRadius: 5,
                                     ),
@@ -166,7 +166,7 @@ class _StarRatingWidgetState extends State<StarRatingWidget>
             _getStarMessage(),
             style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
               color: AppTheme.lightTheme.colorScheme.onSurface
-                  .withValues(alpha: 0.7),
+                  .withAlpha((0.7 * 255).round()),
             ),
             textAlign: TextAlign.center,
           ),
@@ -203,21 +203,21 @@ class StarPainter extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.fill
       ..color = isEarned
-          ? AppTheme.accentColor
-          : AppTheme.lightTheme.colorScheme.onSurface.withValues(alpha: 0.3);
+          ? AppTheme.accentLight
+          : AppTheme.lightTheme.colorScheme.onSurface.withAlpha((0.3 * 255).round());
 
     final strokePaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2
       ..color = isEarned
           ? Colors.orange.shade800
-          : AppTheme.lightTheme.colorScheme.onSurface.withValues(alpha: 0.5);
+          : AppTheme.lightTheme.colorScheme.onSurface.withAlpha((0.5 * 255).round());
 
     // Draw glow effect for earned stars
     if (isEarned && glowIntensity > 0) {
       final glowPaint = Paint()
         ..style = PaintingStyle.fill
-        ..color = AppTheme.accentColor.withValues(alpha: glowIntensity * 0.3)
+        ..color = AppTheme.accentLight.withAlpha((glowIntensity * 0.3 * 255).round())
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
 
       _drawStar(canvas, center, radius * 1.2, glowPaint);
@@ -231,7 +231,7 @@ class StarPainter extends CustomPainter {
     if (isEarned) {
       final highlightPaint = Paint()
         ..style = PaintingStyle.fill
-        ..color = Colors.white.withValues(alpha: 0.3);
+        ..color = Colors.white.withAlpha((0.3 * 255).round());
       _drawStar(canvas, center, radius * 0.6, highlightPaint);
     }
   }

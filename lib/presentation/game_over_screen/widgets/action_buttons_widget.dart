@@ -24,7 +24,7 @@ class ActionButtonsWidget extends StatelessWidget {
           context,
           text: 'Reiniciar Nivel',
           icon: 'refresh',
-          color: AppTheme.successColor,
+          color: AppTheme.successLight,
           onPressed: () {
             HapticFeedback.mediumImpact();
             onRestartLevel();
@@ -72,16 +72,16 @@ class ActionButtonsWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: isPrimary ? color : color.withValues(alpha: 0.1),
+          backgroundColor: isPrimary ? color : color.withAlpha((0.1 * 255).round()),
           foregroundColor: isPrimary ? Colors.white : color,
           elevation: isPrimary ? 4 : 2,
-          shadowColor: color.withValues(alpha: 0.3),
+          shadowColor: color.withAlpha((0.3 * 255).round()),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(3.w),
             side: isPrimary
                 ? BorderSide.none
                 : BorderSide(
-                    color: color.withValues(alpha: 0.5),
+                    color: color.withAlpha((0.5 * 255).round()),
                     width: 2,
                   ),
           ),

@@ -122,7 +122,7 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
             value:
                 '${widget.stats['coinsCollected']}/${widget.stats['totalCoins']}',
             progress: _progressAnimations[0],
-            color: AppTheme.accentColor,
+            color: AppTheme.accentLight,
           ),
 
           SizedBox(height: 2.h),
@@ -134,7 +134,7 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
             value:
                 '${widget.stats['enemiesDefeated']}/${widget.stats['totalEnemies']}',
             progress: _progressAnimations[1],
-            color: AppTheme.warningColor,
+            color: AppTheme.warningLight,
           ),
 
           SizedBox(height: 2.h),
@@ -146,7 +146,7 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
             value:
                 '${widget.stats['secretsFound']}/${widget.stats['totalSecrets']}',
             progress: _progressAnimations[2],
-            color: AppTheme.successColor,
+            color: AppTheme.successLight,
           ),
 
           SizedBox(height: 3.h),
@@ -155,7 +155,7 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
           Container(
             padding: EdgeInsets.all(3.w),
             decoration: BoxDecoration(
-              color: AppTheme.lightTheme.primaryColor.withValues(alpha: 0.1),
+              color: AppTheme.lightTheme.primaryColor.withAlpha((0.1 * 255).round()),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
@@ -265,7 +265,7 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
                     borderRadius: BorderRadius.circular(4),
                     boxShadow: [
                       BoxShadow(
-                        color: color.withValues(alpha: 0.3),
+                        color: color.withAlpha((0.3 * 255).round()),
                         blurRadius: 4,
                         spreadRadius: 1,
                       ),
@@ -295,8 +295,8 @@ class _PerformanceStatsWidgetState extends State<PerformanceStatsWidget>
 
   Color _getTimeRatingColor() {
     final time = widget.stats['completionTime'] as int? ?? 0;
-    if (time <= 60) return AppTheme.successColor;
-    if (time <= 120) return AppTheme.accentColor;
-    return AppTheme.warningColor;
+    if (time <= 60) return AppTheme.successLight;
+    if (time <= 120) return AppTheme.accentLight;
+    return AppTheme.warningLight;
   }
 }

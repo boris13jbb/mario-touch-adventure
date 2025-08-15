@@ -193,7 +193,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
                 'Estadísticas:\n• Monedas: ${_levelStats['coinsCollected']}/${_levelStats['totalCoins']}\n• Tiempo: ${_formatTime(_levelStats['completionTime'])}\n• Enemigos derrotados: ${_levelStats['enemiesDefeated']}',
                 style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
                   color: AppTheme.lightTheme.colorScheme.onSurface
-                      .withValues(alpha: 0.7),
+                      .withAlpha((0.7 * 255).round()),
                 ),
               ),
             ],
@@ -205,7 +205,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
                 'Cancelar',
                 style: TextStyle(
                   color: AppTheme.lightTheme.colorScheme.onSurface
-                      .withValues(alpha: 0.7),
+                      .withAlpha((0.7 * 255).round()),
                 ),
               ),
             ),
@@ -216,7 +216,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: const Text('¡Logro compartido exitosamente!'),
-                    backgroundColor: AppTheme.successColor,
+                    backgroundColor: AppTheme.successLight,
                     behavior: SnackBarBehavior.floating,
                   ),
                 );
@@ -291,7 +291,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
                               'COMPLETADO!',
                               style: AppTheme.lightTheme.textTheme.displaySmall
                                   ?.copyWith(
-                                color: AppTheme.accentColor,
+                                color: AppTheme.accentLight,
                                 fontWeight: FontWeight.bold,
                                 shadows: [
                                   Shadow(
@@ -359,7 +359,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
               opacity: _showRewards ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 500),
               child: Container(
-                color: Colors.black.withValues(alpha: 0.7),
+                color: Colors.black.withAlpha((0.7 * 255).round()),
                 child: Center(
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 8.w),
@@ -380,7 +380,7 @@ class _LevelCompleteScreenState extends State<LevelCompleteScreen>
                       children: [
                         CustomIconWidget(
                           iconName: 'emoji_events',
-                          color: AppTheme.accentColor,
+                          color: AppTheme.accentLight,
                           size: 48,
                         ),
                         SizedBox(height: 2.h),

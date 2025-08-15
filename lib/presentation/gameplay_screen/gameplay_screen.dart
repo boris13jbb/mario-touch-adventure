@@ -271,7 +271,7 @@ class _GameplayScreenState extends State<GameplayScreen>
             children: [
               CustomIconWidget(
                 iconName: 'star',
-                color: AppTheme.accentColor,
+                color: AppTheme.accentLight,
                 size: 48,
               ),
               SizedBox(height: 2.h),

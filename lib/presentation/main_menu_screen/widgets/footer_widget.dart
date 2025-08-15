@@ -30,7 +30,7 @@ class FooterWidget extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.8),
+        color: Colors.black.withAlpha((0.8 * 255).round()),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -59,7 +59,7 @@ class FooterWidget extends StatelessWidget {
                   padding: EdgeInsets.all(2.w),
                   decoration: BoxDecoration(
                     color: AppTheme.lightTheme.colorScheme.primary
-                        .withValues(alpha: 0.2),
+                        .withAlpha((0.2 * 255).round()),
                     shape: BoxShape.circle,
                   ),
                   child: CustomIconWidget(
@@ -76,7 +76,7 @@ class FooterWidget extends StatelessWidget {
           Text(
             '© 2025 Mario Touch Adventure',
             style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
-              color: Colors.white.withValues(alpha: 0.8),
+              color: Colors.white.withAlpha((0.8 * 255).round()),
               fontSize: 10.sp,
             ),
           ),
@@ -84,7 +84,7 @@ class FooterWidget extends StatelessWidget {
           Text(
             'Desarrollado con ❤️ para gamers móviles',
             style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
-              color: Colors.white.withValues(alpha: 0.6),
+              color: Colors.white.withAlpha((0.6 * 255).round()),
               fontSize: 9.sp,
             ),
           ),

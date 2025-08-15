@@ -22,10 +22,10 @@ class SocialSharingWidget extends StatelessWidget {
       width: 85.w,
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color: AppTheme.lightTheme.colorScheme.surface.withValues(alpha: 0.8),
+        color: AppTheme.lightTheme.colorScheme.surface.withAlpha((0.8 * 255).round()),
         borderRadius: BorderRadius.circular(3.w),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.2),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.2 * 255).round()),
           width: 1,
         ),
       ),
@@ -78,10 +78,10 @@ class SocialSharingWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.5.h),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withAlpha((0.1 * 255).round()),
           borderRadius: BorderRadius.circular(2.w),
           border: Border.all(
-            color: color.withValues(alpha: 0.3),
+            color: color.withAlpha((0.3 * 255).round()),
             width: 1,
           ),
         ),
@@ -124,7 +124,7 @@ class SocialSharingWidget extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text('Puntuación copiada al portapapeles'),
-        backgroundColor: AppTheme.successColor,
+        backgroundColor: AppTheme.successLight,
       ),
     );
   }

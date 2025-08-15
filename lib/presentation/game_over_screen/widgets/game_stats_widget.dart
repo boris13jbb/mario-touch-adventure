@@ -26,7 +26,7 @@ class GameStatsWidget extends StatelessWidget {
         color: AppTheme.lightTheme.colorScheme.surface,
         borderRadius: BorderRadius.circular(3.w),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
           width: 1,
         ),
       ),
@@ -48,14 +48,14 @@ class GameStatsWidget extends StatelessWidget {
                 icon: 'monetization_on',
                 value: coinsCollected.toString(),
                 label: 'Monedas',
-                color: AppTheme.accentColor,
+                color: AppTheme.accentLight,
               ),
               _buildStatItem(
                 context,
                 icon: 'sports_kabaddi',
                 value: enemiesDefeated.toString(),
                 label: 'Enemigos',
-                color: AppTheme.warningColor,
+                color: AppTheme.warningLight,
               ),
             ],
           ),
@@ -97,7 +97,7 @@ class GameStatsWidget extends StatelessWidget {
           width: 12.w,
           height: 12.w,
           decoration: BoxDecoration(
-            color: color.withValues(alpha: 0.2),
+            color: color.withAlpha((0.2 * 255).round()),
             borderRadius: BorderRadius.circular(2.w),
           ),
           child: Center(

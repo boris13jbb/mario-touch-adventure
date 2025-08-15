@@ -127,9 +127,9 @@ class _GameOverScreenState extends State<GameOverScreen>
               end: Alignment.bottomCenter,
               colors: [
                 AppTheme.lightTheme.scaffoldBackgroundColor
-                    .withValues(alpha: 0.95),
+                    .withAlpha((0.95 * 255).round()),
                 AppTheme.lightTheme.scaffoldBackgroundColor
-                    .withValues(alpha: 0.98),
+                    .withAlpha((0.98 * 255).round()),
               ],
             ),
           ),
@@ -177,7 +177,7 @@ class _GameOverScreenState extends State<GameOverScreen>
                     boxShadow: [
                       BoxShadow(
                         color: AppTheme.lightTheme.colorScheme.primary
-                            .withValues(alpha: 0.3),
+                            .withAlpha((0.3 * 255).round()),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
@@ -190,7 +190,7 @@ class _GameOverScreenState extends State<GameOverScreen>
                       fontWeight: FontWeight.w700,
                       shadows: [
                         Shadow(
-                          color: Colors.black.withValues(alpha: 0.3),
+                          color: Colors.black.withAlpha((0.3 * 255).round()),
                           offset: const Offset(2, 2),
                           blurRadius: 4,
                         ),

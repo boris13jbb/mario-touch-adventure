@@ -118,8 +118,8 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppTheme.primaryColor,
-                  AppTheme.primaryColor.withOpacity(0.8),
+                  AppTheme.primaryLight,
+                  AppTheme.primaryLight.withOpacity(0.8),
                 ],
               ),
               borderRadius: const BorderRadius.only(
@@ -159,7 +159,7 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
                 _buildActionButton(
                   icon: Icons.play_arrow,
                   text: 'Continuar',
-                  color: AppTheme.successColor,
+                  color: AppTheme.successLight,
                   onTap: _handleResume,
                   delay: 0,
                 ),
@@ -170,7 +170,7 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
                 _buildActionButton(
                   icon: Icons.refresh,
                   text: 'Reiniciar',
-                  color: AppTheme.warningColor,
+                  color: AppTheme.warningLight,
                   onTap: _handleRestart,
                   delay: 100,
                 ),
@@ -181,7 +181,7 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
                 _buildActionButton(
                   icon: Icons.exit_to_app,
                   text: 'Salir',
-                  color: AppTheme.errorColor,
+                  color: AppTheme.errorLight,
                   onTap: _handleQuit,
                   delay: 200,
                 ),
@@ -279,7 +279,7 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
         color: AppTheme.lightTheme.colorScheme.surface.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.primaryColor.withOpacity(0.3),
+          color: AppTheme.primaryLight.withOpacity(0.3),
           width: 1,
         ),
       ),
@@ -288,7 +288,7 @@ class _EnhancedPauseOverlayWidgetState extends State<EnhancedPauseOverlayWidget>
           Text(
             '💡 Consejos',
             style: TextStyle(
-              color: AppTheme.primaryColor,
+              color: AppTheme.primaryLight,
               fontSize: 12.sp,
               fontWeight: FontWeight.bold,
             ),

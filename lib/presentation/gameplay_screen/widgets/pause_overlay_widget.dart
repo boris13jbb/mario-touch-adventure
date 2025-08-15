@@ -21,7 +21,7 @@ class PauseOverlayWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.black.withValues(alpha: 0.8),
+      color: Colors.black.withAlpha((0.8 * 255).round()),
       child: Center(
         child: Container(
           width: 80.w,
@@ -31,7 +31,7 @@ class PauseOverlayWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.3),
+                color: Colors.black.withAlpha((0.3 * 255).round()),
                 blurRadius: 20,
                 offset: Offset(0, 10),
               ),
@@ -76,7 +76,7 @@ class PauseOverlayWidget extends StatelessWidget {
                       height: 20.w,
                       decoration: BoxDecoration(
                         color: AppTheme.lightTheme.primaryColor
-                            .withValues(alpha: 0.1),
+                            .withAlpha((0.1 * 255).round()),
                         shape: BoxShape.circle,
                       ),
                       child: Center(
@@ -94,7 +94,7 @@ class PauseOverlayWidget extends StatelessWidget {
                     _buildActionButton(
                       text: 'CONTINUAR',
                       icon: 'play_arrow',
-                      color: AppTheme.successColor,
+                      color: AppTheme.successLight,
                       onTap: onResume,
                     ),
 
@@ -103,7 +103,7 @@ class PauseOverlayWidget extends StatelessWidget {
                     _buildActionButton(
                       text: 'REINICIAR',
                       icon: 'refresh',
-                      color: AppTheme.warningColor,
+                      color: AppTheme.warningLight,
                       onTap: onRestart,
                     ),
 
@@ -143,7 +143,7 @@ class PauseOverlayWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: 0.3),
+              color: color.withAlpha((0.3 * 255).round()),
               blurRadius: 8,
               offset: Offset(0, 4),
             ),

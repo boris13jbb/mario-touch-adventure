@@ -105,7 +105,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           // Primary button - Iniciar Juego
                           MenuButtonWidget(
                             text: 'Iniciar Juego',
-                            backgroundColor: AppTheme.successColor,
+                            backgroundColor: AppTheme.successLight,
                             onPressed: _handleIniciarJuego,
                             isPrimary: true,
                           ),
@@ -123,7 +123,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
                           MenuButtonWidget(
                             text: 'Instrucciones',
-                            backgroundColor: AppTheme.accentColor,
+                            backgroundColor: AppTheme.accentLight,
                             onPressed: _handleInstrucciones,
                           ),
 
@@ -139,14 +139,14 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      AppTheme.warningColor,
-                                      AppTheme.warningColor
-                                          .withValues(alpha: 0.8),
+                                      AppTheme.warningLight,
+                                      AppTheme.warningLight
+                                          .withAlpha((0.8 * 255).round()),
                                     ],
                                   ),
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
-                                    color: Colors.white.withValues(alpha: 0.5),
+                                    color: Colors.white.withAlpha((0.5 * 255).round()),
                                     width: 1,
                                   ),
                                 ),

@@ -195,7 +195,7 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
                       border: Border.all(color: Colors.white, width: 2),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.3),
+                            color: Colors.black.withAlpha((0.3 * 255).round()),
                             blurRadius: 4,
                             offset: Offset(0, 2)),
                       ]),
@@ -221,12 +221,12 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
                         width: 8.w,
                         height: 8.w,
                         decoration: BoxDecoration(
-                            color: AppTheme.accentColor,
+                            color: AppTheme.accentLight,
                             shape: BoxShape.circle,
                             border: Border.all(color: Colors.white, width: 1),
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.2),
+                                  color: Colors.black.withAlpha((0.2 * 255).round()),
                                   blurRadius: 2,
                                   offset: Offset(0, 1)),
                             ]),
@@ -276,7 +276,7 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.orange.withValues(alpha: 0.5),
+                        color: Colors.orange.withAlpha((0.5 * 255).round()),
                         blurRadius: 4,
                         spreadRadius: 1),
                   ])));
@@ -314,7 +314,7 @@ class BackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.3)
+      ..color = Colors.white.withAlpha((0.3 * 255).round())
       ..style = PaintingStyle.fill;
 
     // Draw clouds

@@ -80,14 +80,14 @@ class LevelQuickActionsWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: AppTheme.lightTheme.colorScheme.primaryContainer
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               children: [
                 CustomIconWidget(
                   iconName: 'emoji_events',
-                  color: AppTheme.accentColor,
+                  color: AppTheme.accentLight,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -161,7 +161,7 @@ class LevelQuickActionsWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color:
-                AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+                AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
           ),
         ),
         child: Row(

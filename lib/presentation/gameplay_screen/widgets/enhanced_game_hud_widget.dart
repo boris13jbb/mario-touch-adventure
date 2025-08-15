@@ -143,7 +143,7 @@ class _EnhancedGameHudWidgetState extends State<EnhancedGameHudWidget>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: AppTheme.errorColor.withOpacity(0.8),
+        color: AppTheme.errorLight.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.white.withOpacity(0.3),
@@ -177,7 +177,7 @@ class _EnhancedGameHudWidgetState extends State<EnhancedGameHudWidget>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: AppTheme.primaryColor.withOpacity(0.8),
+        color: AppTheme.primaryLight.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.white.withOpacity(0.3),
@@ -213,8 +213,8 @@ class _EnhancedGameHudWidgetState extends State<EnhancedGameHudWidget>
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppTheme.accentColor.withOpacity(0.8),
-              AppTheme.accentColor.withOpacity(0.6),
+              AppTheme.accentLight.withOpacity(0.8),
+              AppTheme.accentLight.withOpacity(0.6),
             ],
           ),
           borderRadius: BorderRadius.circular(16),
@@ -269,7 +269,7 @@ class _EnhancedGameHudWidgetState extends State<EnhancedGameHudWidget>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: AppTheme.accentColor.withOpacity(0.8),
+        color: AppTheme.accentLight.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.white.withOpacity(0.3),
@@ -313,7 +313,7 @@ class _EnhancedGameHudWidgetState extends State<EnhancedGameHudWidget>
         width: 10.w,
         height: 10.w,
         decoration: BoxDecoration(
-          color: AppTheme.primaryColor.withOpacity(0.8),
+          color: AppTheme.primaryLight.withOpacity(0.8),
           borderRadius: BorderRadius.circular(10.w / 2),
           border: Border.all(
             color: Colors.white.withOpacity(0.3),

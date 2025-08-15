@@ -120,10 +120,10 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
       height: 22.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -136,7 +136,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -148,7 +148,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
               width: 20.w,
               height: 2.h,
               decoration: BoxDecoration(
-                color: const Color(0xFF9C27B0).withValues(alpha: 0.7),
+                color: const Color(0xFF9C27B0).withAlpha((0.7 * 255).round()),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
@@ -185,7 +185,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                     borderRadius: BorderRadius.circular(4),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF9C27B0).withValues(alpha: 0.3),
+                        color: const Color(0xFF9C27B0).withAlpha((0.3 * 255).round()),
                         blurRadius: 8,
                         spreadRadius: 2,
                       ),
@@ -259,10 +259,10 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
       height: 22.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -275,7 +275,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -287,7 +287,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
               width: 3.w,
               height: 15.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.5),
+                  .withAlpha((0.5 * 255).round()),
             ),
           ),
 
@@ -303,11 +303,11 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                   height: 15.h,
                   decoration: BoxDecoration(
                     color: const Color(0xFFFF9800)
-                        .withValues(alpha: _secretAnimation.value * 0.7),
+                        .withAlpha((_secretAnimation.value * 0.7 * 255).round()),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xFFFF9800)
-                            .withValues(alpha: _secretAnimation.value * 0.5),
+                            .withAlpha((_secretAnimation.value * 0.5 * 255).round()),
                         blurRadius: 12,
                         spreadRadius: 4,
                       ),
@@ -356,7 +356,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFFFD700).withValues(alpha: 0.5),
+                          color: const Color(0xFFFFD700).withAlpha((0.5 * 255).round()),
                           blurRadius: 8,
                           spreadRadius: 2,
                         ),
@@ -415,10 +415,10 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
       height: 22.h,
       decoration: BoxDecoration(
         color: AppTheme.lightTheme.colorScheme.primaryContainer
-            .withValues(alpha: 0.1),
+            .withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.outline.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.outline.withAlpha((0.3 * 255).round()),
         ),
       ),
       child: Stack(
@@ -431,7 +431,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
             child: Container(
               height: 1.h,
               color: AppTheme.lightTheme.colorScheme.outline
-                  .withValues(alpha: 0.3),
+                  .withAlpha((0.3 * 255).round()),
             ),
           ),
 
@@ -452,7 +452,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF2196F3).withValues(alpha: 0.5),
+                          color: const Color(0xFF2196F3).withAlpha((0.5 * 255).round()),
                           blurRadius: 12,
                           spreadRadius: 4,
                         ),
@@ -491,7 +491,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                         ? [
                             BoxShadow(
                               color: const Color(0xFF2196F3)
-                                  .withValues(alpha: 0.5),
+                                  .withAlpha((0.5 * 255).round()),
                               blurRadius: 8,
                               spreadRadius: 2,
                             ),
@@ -563,13 +563,13 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
         color: AppTheme.lightTheme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppTheme.lightTheme.colorScheme.primary.withValues(alpha: 0.3),
+          color: AppTheme.lightTheme.colorScheme.primary.withAlpha((0.3 * 255).round()),
           width: 2,
         ),
         boxShadow: [
           BoxShadow(
             color:
-                AppTheme.lightTheme.colorScheme.shadow.withValues(alpha: 0.1),
+                AppTheme.lightTheme.colorScheme.shadow.withAlpha((0.1 * 255).round()),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -656,11 +656,11 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
             padding: EdgeInsets.all(3.w),
             decoration: BoxDecoration(
               color: (_techniques[_selectedTechnique]['color'] as Color)
-                  .withValues(alpha: 0.1),
+                  .withAlpha((0.1 * 255).round()),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: (_techniques[_selectedTechnique]['color'] as Color)
-                    .withValues(alpha: 0.3),
+                    .withAlpha((0.3 * 255).round()),
               ),
             ),
             child: Column(
@@ -678,7 +678,7 @@ class _AdvancedTechniquesWidgetState extends State<AdvancedTechniquesWidget>
                   padding: EdgeInsets.all(2.w),
                   decoration: BoxDecoration(
                     color: (_techniques[_selectedTechnique]['color'] as Color)
-                        .withValues(alpha: 0.2),
+                        .withAlpha((0.2 * 255).round()),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(

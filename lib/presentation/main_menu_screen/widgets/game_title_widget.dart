@@ -52,8 +52,8 @@ class _GameTitleWidgetState extends State<GameTitleWidget>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppTheme.accentColor,
-                  AppTheme.warningColor,
+                  AppTheme.accentLight,
+                  AppTheme.warningLight,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -61,7 +61,7 @@ class _GameTitleWidgetState extends State<GameTitleWidget>
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: Colors.black.withAlpha((0.3 * 255).round()),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                 ),
@@ -78,7 +78,7 @@ class _GameTitleWidgetState extends State<GameTitleWidget>
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withValues(alpha: 0.5),
+                        color: Colors.black.withAlpha((0.5 * 255).round()),
                         offset: const Offset(2, 2),
                         blurRadius: 4,
                       ),
@@ -94,7 +94,7 @@ class _GameTitleWidgetState extends State<GameTitleWidget>
                     fontWeight: FontWeight.w600,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withValues(alpha: 0.5),
+                        color: Colors.black.withAlpha((0.5 * 255).round()),
                         offset: const Offset(2, 2),
                         blurRadius: 4,
                       ),

@@ -213,9 +213,9 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
                     child: OutlinedButton(
                       onPressed: () => _handleButtonPress(widget.onShare),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.successColor,
+                        foregroundColor: AppTheme.successLight,
                         side: BorderSide(
-                          color: AppTheme.successColor,
+                          color: AppTheme.successLight,
                           width: 2,
                         ),
                         padding: EdgeInsets.symmetric(vertical: 1.8.h),
@@ -228,7 +228,7 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
                         children: [
                           CustomIconWidget(
                             iconName: 'share',
-                            color: AppTheme.successColor,
+                            color: AppTheme.successLight,
                             size: 20,
                           ),
                           SizedBox(height: 0.5.h),
@@ -236,7 +236,7 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
                             'Compartir\nLogro',
                             style: AppTheme.lightTheme.textTheme.bodySmall
                                 ?.copyWith(
-                              color: AppTheme.successColor,
+                              color: AppTheme.successLight,
                               fontWeight: FontWeight.w600,
                             ),
                             textAlign: TextAlign.center,
@@ -264,7 +264,7 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
             }),
             style: TextButton.styleFrom(
               foregroundColor: AppTheme.lightTheme.colorScheme.onSurface
-                  .withValues(alpha: 0.7),
+                  .withAlpha((0.7 * 255).round()),
               padding: EdgeInsets.symmetric(vertical: 1.h),
             ),
             child: Row(
@@ -274,7 +274,7 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
                 CustomIconWidget(
                   iconName: 'home',
                   color: AppTheme.lightTheme.colorScheme.onSurface
-                      .withValues(alpha: 0.7),
+                      .withAlpha((0.7 * 255).round()),
                   size: 18,
                 ),
                 SizedBox(width: 2.w),
@@ -282,7 +282,7 @@ class _ActionButtonsWidgetState extends State<ActionButtonsWidget>
                   'Volver al Menú Principal',
                   style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
                     color: AppTheme.lightTheme.colorScheme.onSurface
-                        .withValues(alpha: 0.7),
+                        .withAlpha((0.7 * 255).round()),
                     fontWeight: FontWeight.w500,
                   ),
                 ),

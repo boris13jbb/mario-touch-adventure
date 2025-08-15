@@ -51,7 +51,7 @@ class GameHudWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.3),
+        color: Colors.black.withAlpha((0.3 * 255).round()),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -75,7 +75,7 @@ class GameHudWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.3),
+        color: Colors.black.withAlpha((0.3 * 255).round()),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -93,7 +93,7 @@ class GameHudWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.3),
+        color: Colors.black.withAlpha((0.3 * 255).round()),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -101,7 +101,7 @@ class GameHudWidget extends StatelessWidget {
         children: [
           CustomIconWidget(
             iconName: 'monetization_on',
-            color: AppTheme.accentColor,
+            color: AppTheme.accentLight,
             size: 18,
           ),
           SizedBox(width: 1.w),
@@ -125,7 +125,7 @@ class GameHudWidget extends StatelessWidget {
         width: 10.w,
         height: 5.h,
         decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.3),
+          color: Colors.black.withAlpha((0.3 * 255).round()),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(

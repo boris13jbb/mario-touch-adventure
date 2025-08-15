@@ -7,10 +7,10 @@ import '../../../core/app_export.dart';
 import '../../../core/physics_engine.dart';
 
 class EnhancedGameCanvasWidget extends StatefulWidget {
-  final PhysicsEngine.Player player;
-  final List<PhysicsEngine.Enemy> enemies;
-  final List<PhysicsEngine.Coin> coins;
-  final List<PhysicsEngine.Projectile> projectiles;
+  final Player player;
+  final List<Enemy> enemies;
+  final List<Coin> coins;
+  final List<Projectile> projectiles;
   final AnimationController particleController;
 
   const EnhancedGameCanvasWidget({
@@ -162,7 +162,7 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
     );
   }
   
-  Widget _buildPlayer(PhysicsEngine.Player player) {
+  Widget _buildPlayer(Player player) {
     return Positioned(
       left: player.x.w,
       bottom: (100 - player.y - player.height).h,
@@ -170,7 +170,7 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
         width: player.width.w,
         height: player.height.h,
         decoration: BoxDecoration(
-          color: AppTheme.primaryColor,
+          color: AppTheme.primaryLight,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
@@ -215,7 +215,7 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
     );
   }
   
-  Widget _buildEnemy(PhysicsEngine.Enemy enemy) {
+  Widget _buildEnemy(Enemy enemy) {
     if (!enemy.isAlive) return const SizedBox.shrink();
     
     return Positioned(
@@ -244,7 +244,7 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
     );
   }
   
-  Widget _buildCoin(PhysicsEngine.Coin coin) {
+  Widget _buildCoin(Coin coin) {
     if (coin.isCollected) return const SizedBox.shrink();
     
     return Positioned(
@@ -281,7 +281,7 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
     );
   }
   
-  Widget _buildProjectile(PhysicsEngine.Projectile projectile) {
+  Widget _buildProjectile(Projectile projectile) {
     if (!projectile.isActive) return const SizedBox.shrink();
     
     return Positioned(

@@ -117,11 +117,11 @@ class _AnimatedBackgroundWidgetState extends State<AnimatedBackgroundWidget>
                   width: 8.w,
                   height: 8.w,
                   decoration: BoxDecoration(
-                    color: AppTheme.accentColor,
+                    color: AppTheme.accentLight,
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.2),
+                        color: Colors.black.withAlpha((0.2 * 255).round()),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),
@@ -151,11 +151,11 @@ class _AnimatedBackgroundWidgetState extends State<AnimatedBackgroundWidget>
                   width: 6.w,
                   height: 6.w,
                   decoration: BoxDecoration(
-                    color: AppTheme.accentColor,
+                    color: AppTheme.accentLight,
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.2),
+                        color: Colors.black.withAlpha((0.2 * 255).round()),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),

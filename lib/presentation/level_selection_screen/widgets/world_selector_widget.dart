@@ -65,7 +65,7 @@ class WorldSelectorWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                   color: AppTheme.lightTheme.colorScheme.primaryContainer
-                      .withValues(alpha: 0.3),
+                      .withAlpha((0.3 * 255).round()),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(

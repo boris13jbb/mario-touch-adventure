@@ -29,7 +29,7 @@ class LevelCardWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: isLocked
-              ? AppTheme.lightTheme.colorScheme.surface.withValues(alpha: 0.5)
+              ? AppTheme.lightTheme.colorScheme.surface.withAlpha((0.5 * 255).round())
               : AppTheme.lightTheme.colorScheme.surface,
           boxShadow: [
             BoxShadow(
@@ -50,7 +50,7 @@ class LevelCardWidget extends StatelessWidget {
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(12)),
                   color: AppTheme.lightTheme.colorScheme.primaryContainer
-                      .withValues(alpha: 0.3),
+                      .withAlpha((0.3 * 255).round()),
                 ),
                 child: Stack(
                   children: [
@@ -73,13 +73,13 @@ class LevelCardWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(12)),
-                          color: Colors.black.withValues(alpha: 0.6),
+                          color: Colors.black.withAlpha((0.6 * 255).round()),
                         ),
                         child: Center(
                           child: CustomIconWidget(
                             iconName: 'lock',
                             color: AppTheme.lightTheme.colorScheme.onSurface
-                                .withValues(alpha: 0.7),
+                                .withAlpha((0.7 * 255).round()),
                             size: 32,
                           ),
                         ),
@@ -93,7 +93,7 @@ class LevelCardWidget extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
-                            color: AppTheme.successColor,
+                            color: AppTheme.successLight,
                             shape: BoxShape.circle,
                           ),
                           child: CustomIconWidget(
@@ -122,7 +122,7 @@ class LevelCardWidget extends StatelessWidget {
                       style: AppTheme.lightTheme.textTheme.titleSmall?.copyWith(
                         color: isLocked
                             ? AppTheme.lightTheme.colorScheme.onSurface
-                                .withValues(alpha: 0.5)
+                                .withAlpha((0.5 * 255).round())
                             : AppTheme.lightTheme.colorScheme.onSurface,
                         fontWeight: FontWeight.w600,
                       ),
@@ -139,7 +139,7 @@ class LevelCardWidget extends StatelessWidget {
                             child: CustomIconWidget(
                               iconName: 'star',
                               color: index < difficulty
-                                  ? AppTheme.accentColor
+                                  ? AppTheme.accentLight
                                   : AppTheme.lightTheme.colorScheme.outline,
                               size: 12,
                             ),

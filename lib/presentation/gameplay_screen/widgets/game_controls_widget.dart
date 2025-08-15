@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../../../core/color_utils.dart';
 
 import '../../../core/app_export.dart';
 
@@ -32,7 +32,7 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
         _currentDirection = direction;
       });
       widget.onMovement(direction);
-      HapticFeedback.lightImpact();
+      HapticFeedback.selectionClick();
     }
   }
 
@@ -109,10 +109,10 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
             width: 25.w,
             height: 25.w,
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.2),
+              color: Colors.black.withAlpha((0.2 * 255).round()),
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.3),
+                color: Colors.white.withAlpha((0.3 * 255).round()),
                 width: 2,
               ),
             ),
@@ -130,8 +130,8 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
                 height: 8.w,
                 decoration: BoxDecoration(
                   color: _currentDirection == 'up'
-                      ? AppTheme.lightTheme.primaryColor.withValues(alpha: 0.8)
-                      : Colors.white.withValues(alpha: 0.3),
+                      ? AppTheme.lightTheme.primaryColor.withAlpha((0.8 * 255).round())
+                      : Colors.white.withAlpha((0.3 * 255).round()),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -156,8 +156,8 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
                 height: 8.w,
                 decoration: BoxDecoration(
                   color: _currentDirection == 'left'
-                      ? AppTheme.lightTheme.primaryColor.withValues(alpha: 0.8)
-                      : Colors.white.withValues(alpha: 0.3),
+                      ? AppTheme.lightTheme.primaryColor.withAlpha((0.8 * 255).round())
+                      : Colors.white.withAlpha((0.3 * 255).round()),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -182,8 +182,8 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
                 height: 8.w,
                 decoration: BoxDecoration(
                   color: _currentDirection == 'right'
-                      ? AppTheme.lightTheme.primaryColor.withValues(alpha: 0.8)
-                      : Colors.white.withValues(alpha: 0.3),
+                      ? AppTheme.lightTheme.primaryColor.withAlpha((0.8 * 255).round())
+                      : Colors.white.withAlpha((0.3 * 255).round()),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -213,8 +213,8 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
             height: 15.w,
             decoration: BoxDecoration(
               color: _isAttackPressed
-                  ? Colors.red.withValues(alpha: 0.9)
-                  : Colors.red.withValues(alpha: 0.7),
+                  ? Colors.red.withAlpha((0.9 * 255).round())
+                  : Colors.red.withAlpha((0.7 * 255).round()),
               shape: BoxShape.circle,
               border: Border.all(
                 color: Colors.white,
@@ -222,7 +222,7 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: Colors.black.withAlpha((0.3 * 255).round()),
                   blurRadius: 4,
                   offset: Offset(0, 2),
                 ),
@@ -248,8 +248,8 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
             height: 20.w,
             decoration: BoxDecoration(
               color: _isJumpPressed
-                  ? AppTheme.successColor.withValues(alpha: 0.9)
-                  : AppTheme.successColor.withValues(alpha: 0.7),
+                  ? AppTheme.successLight.withAlpha((0.9 * 255).round())
+                  : AppTheme.successLight.withAlpha((0.7 * 255).round()),
               shape: BoxShape.circle,
               border: Border.all(
                 color: Colors.white,
@@ -257,7 +257,7 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
+                  color: Colors.black.withAlpha((0.3 * 255).round()),
                   blurRadius: 6,
                   offset: Offset(0, 3),
                 ),
@@ -266,7 +266,7 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
             child: Center(
               child: Text(
                 'SALTO',
-                style: GoogleFonts.fredoka(
+                style: TextStyle(
                   fontSize: 12.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.w400,

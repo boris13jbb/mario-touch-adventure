@@ -25,10 +25,10 @@ class EnhancedGameplayScreen extends StatefulWidget {
 class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     with TickerProviderStateMixin {
   // Physics entities
-  late PhysicsEngine.Player _player;
-  List<PhysicsEngine.Enemy> _enemies = [];
-  List<PhysicsEngine.Coin> _coins = [];
-  List<PhysicsEngine.Projectile> _projectiles = [];
+  late Player _player;
+  List<Enemy> _enemies = [];
+  List<Coin> _coins = [];
+  List<Projectile> _projectiles = [];
   
   // Game state
   bool _isGameActive = true;
@@ -57,7 +57,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
   
   void _initializeGame() {
     // Initialize player
-    _player = PhysicsEngine.Player();
+    _player = Player();
     
     // Generate level entities
     _generateLevelEntities();
@@ -99,7 +99,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     int coinCount = 5 + (level * 2);
     for (int i = 0; i < coinCount; i++) {
       final position = PhysicsEngine.generateRandomPosition(10, 90, 10, 40);
-      _coins.add(PhysicsEngine.Coin(
+      _coins.add(Coin(
         x: position.dx,
         y: position.dy,
       ));
@@ -110,7 +110,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     int enemyCount = 2 + level;
     for (int i = 0; i < enemyCount; i++) {
       final position = PhysicsEngine.generateRandomPosition(10, 90, 0, 30);
-      _enemies.add(PhysicsEngine.Enemy(
+      _enemies.add(Enemy(
         x: position.dx,
         y: position.dy,
         speed: 1.0 + (_random.nextDouble() * 2.0),
@@ -288,7 +288,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     audioManager.playAttackSound();
     
     // Create projectile
-    _projectiles.add(PhysicsEngine.Projectile(
+    _projectiles.add(Projectile(
       x: _player.x + _player.width,
       y: _player.y + _player.height / 2,
       velocityX: 10.0,
@@ -319,7 +319,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     gameState.startNewGame();
     
     setState(() {
-      _player = PhysicsEngine.Player();
+      _player = Player();
       _projectiles.clear();
       _isPaused = false;
       _isGameActive = true;
@@ -358,7 +358,7 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
             children: [
               CustomIconWidget(
                 iconName: 'star',
-                color: AppTheme.accentColor,
+                color: AppTheme.accentLight,
                 size: 48,
               ).animate().scale(duration: 500.ms),
               SizedBox(height: 2.h),

@@ -86,9 +86,9 @@ class _EncouragingMessageWidgetState extends State<EncouragingMessageWidget>
               gradient: LinearGradient(
                 colors: [
                   AppTheme.lightTheme.colorScheme.primary
-                      .withValues(alpha: 0.1),
+                      .withAlpha((0.1 * 255).round()),
                   AppTheme.lightTheme.colorScheme.secondary
-                      .withValues(alpha: 0.1),
+                      .withAlpha((0.1 * 255).round()),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -96,7 +96,7 @@ class _EncouragingMessageWidgetState extends State<EncouragingMessageWidget>
               borderRadius: BorderRadius.circular(3.w),
               border: Border.all(
                 color: AppTheme.lightTheme.colorScheme.primary
-                    .withValues(alpha: 0.2),
+                    .withAlpha((0.2 * 255).round()),
                 width: 1,
               ),
             ),
@@ -104,7 +104,7 @@ class _EncouragingMessageWidgetState extends State<EncouragingMessageWidget>
               children: [
                 CustomIconWidget(
                   iconName: 'favorite',
-                  color: AppTheme.warningColor,
+                  color: AppTheme.warningLight,
                   size: 6.w,
                 ),
                 SizedBox(width: 3.w),

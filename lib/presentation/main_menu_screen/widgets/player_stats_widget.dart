@@ -19,11 +19,11 @@ class PlayerStatsWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(3.w),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.9),
+        color: Colors.white.withAlpha((0.9 * 255).round()),
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Colors.black.withAlpha((0.1 * 255).round()),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -40,7 +40,7 @@ class PlayerStatsWidget extends StatelessWidget {
                 width: 6.w,
                 height: 6.w,
                 decoration: BoxDecoration(
-                  color: AppTheme.accentColor,
+                  color: AppTheme.accentLight,
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -95,7 +95,7 @@ class PlayerStatsWidget extends StatelessWidget {
                   padding: EdgeInsets.only(right: 1.w),
                   child: CustomIconWidget(
                     iconName: 'favorite',
-                    color: AppTheme.warningColor,
+                    color: AppTheme.warningLight,
                     size: 14,
                   ),
                 ),

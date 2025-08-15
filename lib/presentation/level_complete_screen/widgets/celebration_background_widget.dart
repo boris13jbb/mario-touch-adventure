@@ -88,9 +88,9 @@ class _CelebrationBackgroundWidgetState
     final colors = [
       AppTheme.lightTheme.primaryColor,
       AppTheme.lightTheme.colorScheme.secondary,
-      AppTheme.accentColor,
-      AppTheme.successColor,
-      AppTheme.warningColor,
+      AppTheme.accentLight,
+      AppTheme.successLight,
+      AppTheme.warningLight,
     ];
     return colors[_random.nextInt(colors.length)];
   }
@@ -119,8 +119,8 @@ class _CelebrationBackgroundWidgetState
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            AppTheme.lightTheme.primaryColor.withValues(alpha: 0.3),
-            AppTheme.lightTheme.colorScheme.secondary.withValues(alpha: 0.2),
+            AppTheme.lightTheme.primaryColor.withAlpha((0.3 * 255).round()),
+            AppTheme.lightTheme.colorScheme.secondary.withAlpha((0.2 * 255).round()),
             AppTheme.lightTheme.scaffoldBackgroundColor,
           ],
         ),
@@ -269,7 +269,7 @@ class StarsPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = AppTheme.accentColor;
+    final paint = Paint()..color = AppTheme.accentLight;
 
     for (final particle in particles) {
       final opacity = particle.opacity *
@@ -277,7 +277,7 @@ class StarsPainter extends CustomPainter {
               0.5 *
                   math.sin(
                       animation.value * particle.twinkleSpeed * 2 * math.pi));
-      paint.color = AppTheme.accentColor.withValues(alpha: opacity);
+      paint.color = AppTheme.accentLight.withAlpha((opacity * 255).round());
 
       _drawStar(canvas, Offset(particle.x, particle.y), particle.size, paint);
     }
@@ -319,7 +319,7 @@ class CoinsPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppTheme.accentColor
+      ..color = AppTheme.accentLight
       ..style = PaintingStyle.fill;
 
     final strokePaint = Paint()
@@ -335,7 +335,7 @@ class CoinsPainter extends CustomPainter {
 
       // Draw coin shadow
       final shadowPaint = Paint()
-        ..color = Colors.black.withValues(alpha: 0.2)
+        ..color = Colors.black.withAlpha((0.2 * 255).round())
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
       canvas.drawCircle(
         Offset(center.dx + 2, center.dy + 2),

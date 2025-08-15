@@ -67,7 +67,7 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
               color: AppTheme.lightTheme.cardColor,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: AppTheme.lightTheme.primaryColor.withValues(alpha: 0.3),
+                color: AppTheme.lightTheme.primaryColor.withAlpha((0.3 * 255).round()),
                 width: 2,
               ),
               boxShadow: [
@@ -90,9 +90,9 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppTheme.lightTheme.primaryColor.withValues(alpha: 0.2),
+                        AppTheme.lightTheme.primaryColor.withAlpha((0.2 * 255).round()),
                         AppTheme.lightTheme.colorScheme.secondary
-                            .withValues(alpha: 0.2),
+                            .withAlpha((0.2 * 255).round()),
                       ],
                     ),
                   ),
@@ -137,7 +137,7 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
                               padding: EdgeInsets.only(left: 1.w),
                               child: CustomIconWidget(
                                 iconName: 'local_fire_department',
-                                color: AppTheme.warningColor,
+                                color: AppTheme.warningLight,
                                 size: 16,
                               ),
                             ),
@@ -152,12 +152,12 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
                           height: 15.w,
                           decoration: BoxDecoration(
                             color: AppTheme.lightTheme.primaryColor
-                                .withValues(alpha: 0.9),
+                                .withAlpha((0.9 * 255).round()),
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
                                 color: AppTheme.lightTheme.primaryColor
-                                    .withValues(alpha: 0.3),
+                                    .withAlpha((0.3 * 255).round()),
                                 blurRadius: 8,
                                 spreadRadius: 2,
                               ),
@@ -198,7 +198,7 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
                             style: AppTheme.lightTheme.textTheme.bodyMedium
                                 ?.copyWith(
                               color: AppTheme.lightTheme.colorScheme.onSurface
-                                  .withValues(alpha: 0.7),
+                                  .withAlpha((0.7 * 255).round()),
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -212,13 +212,13 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
                         _buildStatChip(
                           icon: 'monetization_on',
                           value: '${widget.nextLevelData['totalCoins']}',
-                          color: AppTheme.accentColor,
+                          color: AppTheme.accentLight,
                         ),
                         SizedBox(height: 1.h),
                         _buildStatChip(
                           icon: 'sports_kabaddi',
                           value: '${widget.nextLevelData['totalEnemies']}',
-                          color: AppTheme.warningColor,
+                          color: AppTheme.warningLight,
                         ),
                       ],
                     ),
@@ -286,9 +286,9 @@ class _NextLevelPreviewWidgetState extends State<NextLevelPreviewWidget>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 0.5.h),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withValues(alpha: 0.3)),
+        border: Border.all(color: color.withAlpha((0.3 * 255).round())),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -316,7 +316,7 @@ class LevelPreviewPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppTheme.lightTheme.primaryColor.withValues(alpha: 0.1)
+      ..color = AppTheme.lightTheme.primaryColor.withAlpha((0.1 * 255).round())
       ..style = PaintingStyle.fill;
 
     // Draw simple geometric pattern
@@ -336,7 +336,7 @@ class LevelPreviewPainter extends CustomPainter {
 
     // Draw some decorative circles
     final circlePaint = Paint()
-      ..color = AppTheme.lightTheme.colorScheme.secondary.withValues(alpha: 0.2)
+      ..color = AppTheme.lightTheme.colorScheme.secondary.withAlpha((0.2 * 255).round())
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(

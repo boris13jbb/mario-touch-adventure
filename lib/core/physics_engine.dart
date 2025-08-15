@@ -3,205 +3,48 @@ import 'package:flutter/material.dart';
 
 /// Professional physics engine for realistic game mechanics
 class PhysicsEngine {
-  static const double _gravity = 0.8;
-  static const double _jumpForce = -15.0;
-  static const double _groundLevel = 0.0;
-  static const double _friction = 0.85;
-  static const double _airResistance = 0.95;
-  
-  /// Physics-based player entity
-  static class Player {
-    double x = 50.0;
-    double y = 0.0;
-    double velocityX = 0.0;
-    double velocityY = 0.0;
-    bool isOnGround = false;
-    bool isJumping = false;
-    bool isAttacking = false;
-    double width = 40.0;
-    double height = 40.0;
-    
-    void update() {
-      // Apply gravity
-      if (!isOnGround) {
-        velocityY += _gravity;
-      }
-      
-      // Apply friction on ground
-      if (isOnGround) {
-        velocityX *= _friction;
-      } else {
-        velocityX *= _airResistance;
-      }
-      
-      // Update position
-      x += velocityX;
-      y += velocityY;
-      
-      // Ground collision
-      if (y >= _groundLevel) {
-        y = _groundLevel;
-        velocityY = 0.0;
-        isOnGround = true;
-        isJumping = false;
-      } else {
-        isOnGround = false;
-      }
-      
-      // Screen boundaries
-      if (x < 0) {
-        x = 0;
-        velocityX = 0;
-      } else if (x > 100 - width) {
-        x = 100 - width;
-        velocityX = 0;
-      }
-    }
-    
-    void jump() {
-      if (isOnGround && !isJumping) {
-        velocityY = _jumpForce;
-        isJumping = true;
-        isOnGround = false;
-      }
-    }
-    
-    void move(double direction) {
-      if (direction != 0) {
-        velocityX += direction * 2.0;
-        velocityX = velocityX.clamp(-8.0, 8.0);
-      }
-    }
-    
-    void attack() {
-      isAttacking = true;
-      // Reset attack state after animation
-      Future.delayed(const Duration(milliseconds: 300), () {
-        isAttacking = false;
-      });
-    }
-    
-    Rect getBounds() {
-      return Rect.fromLTWH(x, y, width, height);
-    }
-  }
-  
-  /// Physics-based enemy entity
-  static class Enemy {
-    double x = 0.0;
-    double y = 0.0;
-    double velocityX = 0.0;
-    double velocityY = 0.0;
-    bool isAlive = true;
-    double width = 30.0;
-    double height = 30.0;
-    double speed = 1.0;
-    double direction = 1.0;
-    double patrolDistance = 50.0;
-    double startX = 0.0;
-    
-    Enemy({
-      required this.x,
-      required this.y,
-      this.speed = 1.0,
-      this.patrolDistance = 50.0,
-    }) {
-      startX = x;
-    }
-    
-    void update() {
-      if (!isAlive) return;
-      
-      // Apply gravity
-      velocityY += _gravity;
-      
-      // Update position
-      x += velocityX;
-      y += velocityY;
-      
-      // Ground collision
-      if (y >= _groundLevel) {
-        y = _groundLevel;
-        velocityY = 0.0;
-      }
-      
-      // Patrol movement
-      velocityX = direction * speed;
-      
-      // Change direction at patrol boundaries
-      if (x <= startX || x >= startX + patrolDistance) {
-        direction *= -1;
-      }
-    }
-    
-    Rect getBounds() {
-      return Rect.fromLTWH(x, y, width, height);
-    }
-  }
-  
-  /// Physics-based coin entity
-  static class Coin {
-    double x = 0.0;
-    double y = 0.0;
-    bool isCollected = false;
-    double width = 20.0;
-    double height = 20.0;
-    double rotation = 0.0;
-    
-    Coin({required this.x, required this.y});
-    
-    void update() {
-      if (!isCollected) {
-        rotation += 0.1; // Rotate coin
-      }
-    }
-    
-    Rect getBounds() {
-      return Rect.fromLTWH(x, y, width, height);
-    }
-  }
-  
-  /// Physics-based projectile entity
-  static class Projectile {
-    double x = 0.0;
-    double y = 0.0;
-    double velocityX = 0.0;
-    double velocityY = 0.0;
-    bool isActive = true;
-    double width = 10.0;
-    double height = 10.0;
-    
-    Projectile({
-      required this.x,
-      required this.y,
-      required this.velocityX,
-      required this.velocityY,
-    });
-    
-    void update() {
-      if (!isActive) return;
-      
-      // Apply gravity
-      velocityY += _gravity * 0.5;
-      
-      // Update position
-      x += velocityX;
-      y += velocityY;
-      
-      // Deactivate if off screen or hitting ground
-      if (x < 0 || x > 100 || y > 100) {
-        isActive = false;
-      }
-    }
-    
-    Rect getBounds() {
-      return Rect.fromLTWH(x, y, width, height);
-    }
-  }
+  static const double gravity = 0.8;
+  static const double jumpForce = -15.0;
+  static const double groundLevel = 0.0;
+  static const double friction = 0.85;
+  static const double airResistance = 0.95;
   
   /// Check collision between two rectangles
   static bool checkCollision(Rect rect1, Rect rect2) {
     return rect1.overlaps(rect2);
+  }
+  
+  /// Apply gravity to velocity
+  static double applyGravity(double velocityY) {
+    return velocityY + gravity;
+  }
+  
+  /// Apply friction to velocity
+  static double applyFriction(double velocityX, bool isOnGround) {
+    if (isOnGround) {
+      return velocityX * friction;
+    } else {
+      return velocityX * airResistance;
+    }
+  }
+  
+  /// Check ground collision
+  static bool isOnGround(double y) {
+    return y >= groundLevel;
+  }
+  
+  /// Clamp value between min and max
+  static double clamp(double value, double min, double max) {
+    return value.clamp(min, max);
+  }
+  
+  /// Generate random position within bounds
+  static Offset generateRandomPosition(double minX, double maxX, double minY, double maxY) {
+    final random = Random();
+    return Offset(
+      minX + random.nextDouble() * (maxX - minX),
+      minY + random.nextDouble() * (maxY - minY),
+    );
   }
   
   /// Check collision between player and enemy
@@ -239,15 +82,6 @@ class PhysicsEngine {
     return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
   }
   
-  /// Generate random position within bounds
-  static Offset generateRandomPosition(double minX, double maxX, double minY, double maxY) {
-    final random = Random();
-    return Offset(
-      minX + random.nextDouble() * (maxX - minX),
-      minY + random.nextDouble() * (maxY - minY),
-    );
-  }
-  
   /// Apply screen shake effect
   static Offset calculateScreenShake(double intensity, double time) {
     final random = Random();
@@ -267,5 +101,191 @@ class PhysicsEngine {
       particles.add(Offset(x, y));
     }
     return particles;
+  }
+}
+
+/// Physics-based player entity
+class Player {
+  double x = 50.0;
+  double y = 0.0;
+  double velocityX = 0.0;
+  double velocityY = 0.0;
+  bool isOnGround = false;
+  bool isJumping = false;
+  bool isAttacking = false;
+  double width = 40.0;
+  double height = 40.0;
+  
+  void update() {
+    // Apply gravity
+    if (!isOnGround) {
+      velocityY = PhysicsEngine.applyGravity(velocityY);
+    }
+    
+    // Apply friction on ground
+    velocityX = PhysicsEngine.applyFriction(velocityX, isOnGround);
+    
+    // Update position
+    x += velocityX;
+    y += velocityY;
+    
+    // Ground collision
+    if (PhysicsEngine.isOnGround(y)) {
+      y = PhysicsEngine.groundLevel;
+      velocityY = 0.0;
+      isOnGround = true;
+      isJumping = false;
+    } else {
+      isOnGround = false;
+    }
+    
+    // Screen boundaries
+    if (x < 0) {
+      x = 0;
+      velocityX = 0;
+    } else if (x > 100 - width) {
+      x = 100 - width;
+      velocityX = 0;
+    }
+  }
+  
+  void jump() {
+    if (isOnGround && !isJumping) {
+      velocityY = PhysicsEngine.jumpForce;
+      isJumping = true;
+      isOnGround = false;
+    }
+  }
+  
+  void move(double direction) {
+    if (direction != 0) {
+      velocityX += direction * 2.0;
+      velocityX = PhysicsEngine.clamp(velocityX, -8.0, 8.0);
+    }
+  }
+  
+  void attack() {
+    isAttacking = true;
+    // Reset attack state after animation
+    Future.delayed(const Duration(milliseconds: 300), () {
+      isAttacking = false;
+    });
+  }
+  
+  Rect getBounds() {
+    return Rect.fromLTWH(x, y, width, height);
+  }
+}
+
+/// Physics-based enemy entity
+class Enemy {
+  double x = 0.0;
+  double y = 0.0;
+  double velocityX = 0.0;
+  double velocityY = 0.0;
+  bool isAlive = true;
+  double width = 30.0;
+  double height = 30.0;
+  double speed = 1.0;
+  double direction = 1.0;
+  double patrolDistance = 50.0;
+  double startX = 0.0;
+  
+  Enemy({
+    required this.x,
+    required this.y,
+    this.speed = 1.0,
+    this.patrolDistance = 50.0,
+  }) {
+    startX = x;
+  }
+  
+  void update() {
+    if (!isAlive) return;
+    
+    // Apply gravity
+    velocityY = PhysicsEngine.applyGravity(velocityY);
+    
+    // Update position
+    x += velocityX;
+    y += velocityY;
+    
+    // Ground collision
+    if (PhysicsEngine.isOnGround(y)) {
+      y = PhysicsEngine.groundLevel;
+      velocityY = 0.0;
+    }
+    
+    // Patrol movement
+    velocityX = direction * speed;
+    
+    // Change direction at patrol boundaries
+    if (x <= startX || x >= startX + patrolDistance) {
+      direction *= -1;
+    }
+  }
+  
+  Rect getBounds() {
+    return Rect.fromLTWH(x, y, width, height);
+  }
+}
+
+/// Physics-based coin entity
+class Coin {
+  double x = 0.0;
+  double y = 0.0;
+  bool isCollected = false;
+  double width = 20.0;
+  double height = 20.0;
+  double rotation = 0.0;
+  
+  Coin({required this.x, required this.y});
+  
+  void update() {
+    if (!isCollected) {
+      rotation += 0.1; // Rotate coin
+    }
+  }
+  
+  Rect getBounds() {
+    return Rect.fromLTWH(x, y, width, height);
+  }
+}
+
+/// Physics-based projectile entity
+class Projectile {
+  double x = 0.0;
+  double y = 0.0;
+  double velocityX = 0.0;
+  double velocityY = 0.0;
+  bool isActive = true;
+  double width = 10.0;
+  double height = 10.0;
+  
+  Projectile({
+    required this.x,
+    required this.y,
+    required this.velocityX,
+    required this.velocityY,
+  });
+  
+  void update() {
+    if (!isActive) return;
+    
+    // Apply gravity
+    velocityY = PhysicsEngine.applyGravity(velocityY);
+    
+    // Update position
+    x += velocityX;
+    y += velocityY;
+    
+    // Deactivate if off screen
+    if (x < -50 || x > 150 || y > 200) {
+      isActive = false;
+    }
+  }
+  
+  Rect getBounds() {
+    return Rect.fromLTWH(x, y, width, height);
   }
 }

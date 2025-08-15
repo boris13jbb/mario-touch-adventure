@@ -85,7 +85,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
                 gradient: LinearGradient(
                   colors: [
                     widget.backgroundColor,
-                    widget.backgroundColor.withValues(alpha: 0.8),
+                    widget.backgroundColor.withAlpha((0.8 * 255).round()),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -94,14 +94,14 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
                 boxShadow: [
                   BoxShadow(
                     color: _isPressed
-                        ? Colors.black.withValues(alpha: 0.1)
-                        : Colors.black.withValues(alpha: 0.3),
+                        ? Colors.black.withAlpha((0.1 * 255).round())
+                        : Colors.black.withAlpha((0.3 * 255).round()),
                     blurRadius: _isPressed ? 4 : 8,
                     offset: Offset(0, _isPressed ? 2 : 4),
                   ),
                 ],
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.3),
+                  color: Colors.white.withAlpha((0.3 * 255).round()),
                   width: 2,
                 ),
               ),
@@ -114,7 +114,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withValues(alpha: 0.5),
+                        color: Colors.black.withAlpha((0.5 * 255).round()),
                         offset: const Offset(1, 1),
                         blurRadius: 2,
                       ),
