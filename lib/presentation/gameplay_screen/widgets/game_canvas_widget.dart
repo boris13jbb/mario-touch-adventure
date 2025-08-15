@@ -41,7 +41,7 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
 
   double _playerX = 50.0;
   double _playerY = 200.0;
-  double _groundLevel = 200.0;
+  // double _groundLevel = 200.0; // Unused field - commented out
   bool _isPlayerOnGround = true;
 
   @override

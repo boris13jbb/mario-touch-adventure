@@ -23,7 +23,7 @@ class _GameplayScreenState extends State<GameplayScreen>
   // Game state variables
   int _lives = 3;
   int _currentLevel = 1;
-  int _score = 0;
+  // int _score = 0; // Unused field - commented out
   bool _isPaused = false;
   bool _isGameActive = true;
 
@@ -306,13 +306,13 @@ class _GameplayScreenState extends State<GameplayScreen>
     );
   }
 
-  void _gameOver() {
-    setState(() {
-      _isGameActive = false;
-    });
-
-    Navigator.pushReplacementNamed(context, '/game-over-screen');
-  }
+  // void _gameOver() {
+  //   setState(() {
+  //     _isGameActive = false;
+  //   });
+  // 
+  //   Navigator.pushReplacementNamed(context, '/game-over-screen');
+  // }
 
   @override
   Widget build(BuildContext context) {

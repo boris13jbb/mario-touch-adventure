@@ -90,11 +90,11 @@ class AppTheme {
       onError: onErrorLight,
       errorContainer: errorLight,
       onErrorContainer: onErrorLight,
-      background: backgroundLight,
-      onBackground: onBackgroundLight,
+      surface: backgroundLight,
+      onSurface: onBackgroundLight,
       surface: surfaceLight,
       onSurface: onSurfaceLight,
-      surfaceVariant: surfaceLight,
+      surfaceContainerHighest: surfaceLight,
       onSurfaceVariant: onSurfaceLight,
       outline: dividerLight,
       outlineVariant: dividerLight,
@@ -213,10 +213,8 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
     ),
-    cardTheme: CardThemeData(
-      color: cardLight,
+    cardTheme: const CardTheme(
       elevation: 4,
-      shadowColor: shadowLight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -304,11 +302,11 @@ class AppTheme {
       onError: onErrorDark,
       errorContainer: errorDark,
       onErrorContainer: onErrorDark,
-      background: backgroundDark,
-      onBackground: onBackgroundDark,
+      surface: backgroundDark,
+      onSurface: onBackgroundDark,
       surface: surfaceDark,
       onSurface: onSurfaceDark,
-      surfaceVariant: surfaceDark,
+      surfaceContainerHighest: surfaceDark,
       onSurfaceVariant: onSurfaceDark,
       outline: dividerDark,
       outlineVariant: dividerDark,
@@ -427,10 +425,8 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
     ),
-    cardTheme: CardThemeData(
-      color: cardDark,
+    cardTheme: const CardTheme(
       elevation: 4,
-      shadowColor: shadowDark,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
