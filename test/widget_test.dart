@@ -6,8 +6,9 @@ import 'package:mario_touch_adventure/core/game_state.dart';
 
 void main() {
   testWidgets('App should start without crashing', (WidgetTester tester) async {
-    // Create a mock game state
+    // Create a mock game state and initialize it
     final gameState = GameState();
+    await gameState.initialize();
     
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(gameState: gameState));
