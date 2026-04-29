@@ -69,11 +69,14 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
             const AnimatedBackgroundWidget(),
 
             // Main content
-            SingleChildScrollView(
-              child: SizedBox(
-                width: double.infinity,
-                height: 100.h,
+            LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: SizedBox(
+                    width: double.infinity,
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     // Top section with audio controls and stats
                     Padding(
@@ -93,14 +96,15 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     ),
 
                     // Game title
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 5.h),
                     const GameTitleWidget(),
 
                     // Main menu buttons
-                    SizedBox(height: 8.h),
-                    Expanded(
+                    SizedBox(height: 5.h),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 3.h),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           // Primary button - Iniciar Juego
                           MenuButtonWidget(
@@ -111,14 +115,17 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           ),
 
                           // Secondary buttons
-                          GestureDetector(
-                            onLongPress: _handleNivelesLongPress,
-                            child: MenuButtonWidget(
-                              text: 'Niveles',
-                              backgroundColor:
-                                  AppTheme.lightTheme.colorScheme.primary,
-                              onPressed: _handleNiveles,
-                            ),
+                          MenuButtonWidget(
+                            text: 'Niveles',
+                            backgroundColor:
+                                AppTheme.lightTheme.colorScheme.primary,
+                            onPressed: _handleNiveles,
+                          ),
+
+                          TextButton.icon(
+                            onPressed: _handleNivelesLongPress,
+                            icon: const Icon(Icons.flash_on_rounded),
+                            label: const Text('Mostrar acceso rápido'),
                           ),
 
                           MenuButtonWidget(
@@ -190,6 +197,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     // Footer
                     const FooterWidget(),
                   ],
+                  ),
                 ),
               ),
             ),

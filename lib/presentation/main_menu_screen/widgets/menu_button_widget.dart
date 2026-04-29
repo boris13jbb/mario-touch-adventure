@@ -58,7 +58,6 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
   void _onTapUp(TapUpDetails details) {
     setState(() => _isPressed = false);
     _animationController.reverse();
-    widget.onPressed();
   }
 
   void _onTapCancel() {
@@ -68,29 +67,21 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
 
   @override
   Widget build(BuildContext context) {
+    final BorderRadius borderRadius = BorderRadius.circular(16);
+
     return AnimatedBuilder(
       animation: _scaleAnimation,
       builder: (context, child) {
         return Transform.scale(
           scale: _scaleAnimation.value,
-          child: GestureDetector(
-            onTapDown: _onTapDown,
-            onTapUp: _onTapUp,
-            onTapCancel: _onTapCancel,
+          child: Semantics(
+            button: true,
+            label: widget.text,
             child: Container(
               width: 80.w,
               height: widget.isPrimary ? 8.h : 7.h,
               margin: EdgeInsets.symmetric(vertical: 1.h),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    widget.backgroundColor,
-                    widget.backgroundColor.withAlpha((0.8 * 255).round()),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-                borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
                     color: _isPressed
@@ -100,25 +91,49 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
                     offset: Offset(0, _isPressed ? 2 : 4),
                   ),
                 ],
-                border: Border.all(
-                  color: Colors.white.withAlpha((0.3 * 255).round()),
-                  width: 2,
-                ),
               ),
-              child: Center(
-                child: Text(
-                  widget.text,
-                  style: AppTheme.lightTheme.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
-                    fontSize: widget.isPrimary ? 16.sp : 14.sp,
-                    fontWeight: FontWeight.bold,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black.withAlpha((0.5 * 255).round()),
-                        offset: const Offset(1, 1),
-                        blurRadius: 2,
+              child: Material(
+                color: Colors.transparent,
+                borderRadius: borderRadius,
+                child: Ink(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        widget.backgroundColor,
+                        widget.backgroundColor.withAlpha((0.8 * 255).round()),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    borderRadius: borderRadius,
+                    border: Border.all(
+                      color: Colors.white.withAlpha((0.3 * 255).round()),
+                      width: 2,
+                    ),
+                  ),
+                  child: InkWell(
+                    borderRadius: borderRadius,
+                    onTap: widget.onPressed,
+                    onTapDown: _onTapDown,
+                    onTapCancel: _onTapCancel,
+                    onTapUp: _onTapUp,
+                    child: Center(
+                      child: Text(
+                        widget.text,
+                        style: AppTheme.lightTheme.textTheme.titleLarge?.copyWith(
+                          color: Colors.white,
+                          fontSize: widget.isPrimary ? 16.sp : 14.sp,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black.withAlpha((0.5 * 255).round()),
+                              offset: const Offset(1, 1),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
