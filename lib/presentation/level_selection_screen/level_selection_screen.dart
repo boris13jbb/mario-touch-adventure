@@ -294,6 +294,8 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   }
 
   void _switchWorld(int direction) {
+    final previousIndex = currentWorldIndex;
+
     setState(() {
       if (direction > 0 && currentWorldIndex < worlds.length - 1) {
         currentWorldIndex++;
@@ -302,6 +304,11 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
       }
     });
 
+    if (previousIndex == currentWorldIndex) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Ahora estás en $currentWorldName'),
