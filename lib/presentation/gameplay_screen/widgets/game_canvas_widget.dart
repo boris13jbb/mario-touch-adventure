@@ -176,7 +176,9 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
   }
 
   Widget _buildPlayer() {
-    double jumpOffset = _isPlayerOnGround ? 0 : -30 * _playerAnimation.value;
+    // Positive bottom offset lifts the player visually upward while jumping.
+    final double jumpOffset =
+        _isPlayerOnGround ? 0 : 30 * _playerAnimation.value;
 
     return AnimatedBuilder(
         animation: _playerAnimation,
@@ -188,22 +190,38 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
                   width: 15.w,
                   height: 15.w,
                   decoration: BoxDecoration(
-                      color: widget.isAttacking
-                          ? Colors.orange
-                          : AppTheme.lightTheme.primaryColor,
-                      borderRadius: BorderRadius.circular(8),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: widget.isAttacking
+                            ? [const Color(0xFFF59E0B), const Color(0xFFB45309)]
+                            : [const Color(0xFF2563EB), const Color(0xFF1D4ED8)],
+                      ),
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.white, width: 2),
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.black.withAlpha((0.3 * 255).round()),
-                            blurRadius: 4,
-                            offset: Offset(0, 2)),
+                            color: Colors.black.withAlpha((0.35 * 255).round()),
+                            blurRadius: 8,
+                            offset: const Offset(0, 3)),
                       ]),
                   child: Center(
-                      child: CustomIconWidget(
-                          iconName: widget.isAttacking ? 'flash_on' : 'person',
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomIconWidget(
+                          iconName: widget.isAttacking ? 'flash_on' : 'shield',
                           color: Colors.white,
-                          size: 24))));
+                          size: 20),
+                      Text(
+                        'HÉROE',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 7.sp,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ))));
         });
   }
 
@@ -251,12 +269,16 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
                     width: 12.w,
                     height: 12.w,
                     decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(width: 2)),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFFEF4444), Color(0xFF991B1B)],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.black87, width: 1.5)),
                     child: Center(
                         child: CustomIconWidget(
-                            iconName: 'bug_report',
+                            iconName: 'android',
                             color: Colors.white,
                             size: 20))));
           });
