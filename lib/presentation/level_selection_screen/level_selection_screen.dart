@@ -200,8 +200,20 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   }
 
   void _navigateToLevel(Map<String, dynamic> levelData) {
+    final bool isLocked = levelData['isLocked'] == true;
     final int levelNumber = levelData['levelNumber'] as int;
-    Navigator.pushNamed(context, '/gameplay-screen', arguments: {
+
+    if (isLocked) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Nivel $levelNumber bloqueado. Completa niveles previos.'),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+      return;
+    }
+
+    Navigator.pushNamed(context, '/enhanced-gameplay-screen', arguments: {
       'levelNumber': levelNumber,
       'worldIndex': currentWorldIndex,
     });
@@ -289,6 +301,13 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
         currentWorldIndex--;
       }
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Ahora estás en $currentWorldName'),
+        duration: const Duration(milliseconds: 1200),
+      ),
+    );
   }
 
   Future<void> _refreshProgress() async {
@@ -308,8 +327,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
           // Fixed header with progress
           ProgressHeaderWidget(
             completionPercentage: completionPercentage,
-            onBackPressed: () =>
-                Navigator.pushNamed(context, '/main-menu-screen'),
+            onBackPressed: () => Navigator.pop(context),
           ),
 
           // Main content with level grid
