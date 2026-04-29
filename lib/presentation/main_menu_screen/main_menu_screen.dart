@@ -18,6 +18,7 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   bool _showQuickAccess = false;
+  static const int _lastPlayedLevel = 12;
 
   void _handleIniciarJuego() {
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
@@ -31,7 +32,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
     Navigator.pushNamed(context, '/instructions-screen');
   }
 
-  void _handleNivelesLongPress() {
+  void _toggleQuickAccess() {
     setState(() {
       _showQuickAccess = !_showQuickAccess;
     });
@@ -73,11 +74,14 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
               builder: (context, constraints) => SingleChildScrollView(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                  child: SizedBox(
-                    width: double.infinity,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 560),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
                     // Top section with audio controls and stats
                     Padding(
                       padding:
@@ -123,9 +127,13 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           ),
 
                           TextButton.icon(
-                            onPressed: _handleNivelesLongPress,
+                            onPressed: _toggleQuickAccess,
                             icon: const Icon(Icons.flash_on_rounded),
-                            label: const Text('Mostrar acceso rápido'),
+                            label: Text(
+                              _showQuickAccess
+                                  ? 'Ocultar acceso rápido'
+                                  : 'Mostrar acceso rápido',
+                            ),
                           ),
 
                           MenuButtonWidget(
@@ -174,7 +182,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                           ),
                                           SizedBox(width: 2.w),
                                           Text(
-                                            'Último Nivel (12)',
+                                            'Último Nivel ($_lastPlayedLevel)',
                                             style: AppTheme.lightTheme.textTheme
                                                 .titleMedium
                                                 ?.copyWith(
@@ -196,7 +204,10 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
                     // Footer
                     const FooterWidget(),
-                  ],
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
