@@ -289,10 +289,10 @@ class _EnhancedGameplayScreenState extends State<EnhancedGameplayScreen>
     
     // Create projectile
     _projectiles.add(Projectile(
-      x: _player.x + _player.width,
-      y: _player.y + _player.height / 2,
-      velocityX: 10.0,
-      velocityY: -2.0,
+      x: _player.x + (_player.width / 2),
+      y: _player.y + _player.height,
+      velocityX: 0.0,
+      velocityY: -12.0,
     ));
   }
   

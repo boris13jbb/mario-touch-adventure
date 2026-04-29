@@ -280,7 +280,7 @@ class Projectile {
     y += velocityY;
     
     // Deactivate if off screen
-    if (x < -50 || x > 150 || y > 200) {
+    if (x < -50 || x > 150 || y > 200 || y < -50) {
       isActive = false;
     }
   }
