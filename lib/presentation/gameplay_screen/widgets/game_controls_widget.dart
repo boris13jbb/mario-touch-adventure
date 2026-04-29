@@ -79,20 +79,23 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 20.h,
-      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          // Virtual joystick
-          _buildVirtualJoystick(),
+    return SafeArea(
+      top: false,
+      child: Container(
+        width: double.infinity,
+        height: 22.h,
+        padding: EdgeInsets.fromLTRB(4.w, 1.h, 4.w, 2.5.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            // Virtual joystick
+            _buildVirtualJoystick(),
 
-          // Action buttons
-          _buildActionButtons(),
-        ],
+            // Action buttons
+            _buildActionButtons(),
+          ],
+        ),
       ),
     );
   }
@@ -122,15 +125,13 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
           Positioned(
             top: 0,
             child: GestureDetector(
-              onTapDown: (_) => _handleMovement('up'),
-              onTapUp: (_) => _stopMovement(),
-              onTapCancel: () => _stopMovement(),
+              onTap: _handleJump,
               child: Container(
                 width: 8.w,
                 height: 8.w,
                 decoration: BoxDecoration(
-                  color: _currentDirection == 'up'
-                      ? AppTheme.lightTheme.primaryColor.withAlpha((0.8 * 255).round())
+                  color: _isJumpPressed
+                      ? AppTheme.successLight.withAlpha((0.85 * 255).round())
                       : Colors.white.withAlpha((0.3 * 255).round()),
                   shape: BoxShape.circle,
                 ),

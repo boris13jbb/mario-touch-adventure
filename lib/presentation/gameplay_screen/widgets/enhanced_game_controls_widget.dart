@@ -69,20 +69,23 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 20.h,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.black.withOpacity(0.8),
-            Colors.black.withOpacity(0.6),
-          ],
+    return SafeArea(
+      top: false,
+      child: Container(
+        height: 22.h,
+        padding: EdgeInsets.only(bottom: 1.5.h),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black.withOpacity(0.8),
+              Colors.black.withOpacity(0.6),
+            ],
+          ),
         ),
-      ),
-      child: Stack(
-        children: [
+        child: Stack(
+          children: [
           // Movement controls (left side)
           Positioned(
             left: 5.w,
@@ -145,7 +148,8 @@ class _EnhancedGameControlsWidgetState extends State<EnhancedGameControlsWidget>
             bottom: 5.h,
             child: _buildJoystickArea(),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }

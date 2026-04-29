@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
@@ -18,6 +21,7 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   bool _showQuickAccess = false;
+  Timer? _quickAccessTimer;
 
   void _handleIniciarJuego() {
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
@@ -31,7 +35,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
     Navigator.pushNamed(context, '/instructions-screen');
   }
 
-  void _handleNivelesLongPress() {
+  void _toggleQuickAccess() {
+    _quickAccessTimer?.cancel();
+
     setState(() {
       _showQuickAccess = !_showQuickAccess;
     });
@@ -45,7 +51,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       );
 
       // Auto-hide after 3 seconds
-      Future.delayed(const Duration(seconds: 3), () {
+      _quickAccessTimer = Timer(const Duration(seconds: 3), () {
         if (mounted) {
           setState(() {
             _showQuickAccess = false;
@@ -55,12 +61,25 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
     }
   }
 
+  @override
+  void dispose() {
+    _quickAccessTimer?.cancel();
+    super.dispose();
+  }
+
   void _handleQuickAccess() {
+    final gameState = context.read<GameState>();
+    if (!gameState.isGameActive) {
+      gameState.startNewGame();
+    }
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
   }
 
   @override
   Widget build(BuildContext context) {
+    final gameState = context.watch<GameState>();
+    final int lastPlayedLevel = gameState.currentLevel;
+
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -69,12 +88,18 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
             const AnimatedBackgroundWidget(),
 
             // Main content
-            SingleChildScrollView(
-              child: SizedBox(
-                width: double.infinity,
-                height: 100.h,
-                child: Column(
-                  children: [
+            LayoutBuilder(
+              builder: (context, constraints) => SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 560),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
                     // Top section with audio controls and stats
                     Padding(
                       padding:
@@ -93,14 +118,15 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     ),
 
                     // Game title
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 5.h),
                     const GameTitleWidget(),
 
                     // Main menu buttons
-                    SizedBox(height: 8.h),
-                    Expanded(
+                    SizedBox(height: 5.h),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 3.h),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           // Primary button - Iniciar Juego
                           MenuButtonWidget(
@@ -111,13 +137,20 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           ),
 
                           // Secondary buttons
-                          GestureDetector(
-                            onLongPress: _handleNivelesLongPress,
-                            child: MenuButtonWidget(
-                              text: 'Niveles',
-                              backgroundColor:
-                                  AppTheme.lightTheme.colorScheme.primary,
-                              onPressed: _handleNiveles,
+                          MenuButtonWidget(
+                            text: 'Niveles',
+                            backgroundColor:
+                                AppTheme.lightTheme.colorScheme.primary,
+                            onPressed: _handleNiveles,
+                          ),
+
+                          TextButton.icon(
+                            onPressed: _toggleQuickAccess,
+                            icon: const Icon(Icons.flash_on_rounded),
+                            label: Text(
+                              _showQuickAccess
+                                  ? 'Ocultar acceso rápido'
+                                  : 'Mostrar acceso rápido',
                             ),
                           ),
 
@@ -167,7 +200,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                           ),
                                           SizedBox(width: 2.w),
                                           Text(
-                                            'Último Nivel (12)',
+                                            'Último Nivel ($lastPlayedLevel)',
                                             style: AppTheme.lightTheme.textTheme
                                                 .titleMedium
                                                 ?.copyWith(
@@ -189,7 +222,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
                     // Footer
                     const FooterWidget(),
-                  ],
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
