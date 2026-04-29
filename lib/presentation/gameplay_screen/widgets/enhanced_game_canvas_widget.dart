@@ -166,51 +166,65 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
     return Positioned(
       left: player.x.w,
       bottom: (100 - player.y - player.height).h,
-      child: Container(
-        width: player.width.w,
-        height: player.height.h,
-        decoration: BoxDecoration(
-          color: AppTheme.primaryLight,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Stack(
-          children: [
-            // Player face
-            Center(
-              child: Container(
-                width: 60.w,
-                height: 60.h,
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Icon(
-                  Icons.face,
-                  color: Colors.white,
-                  size: 20.sp,
-                ),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            width: player.width.w,
+            height: player.height.h,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFF2563EB), Color(0xFF1E3A8A)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
-            ),
-            
-            // Attack effect
-            if (player.isAttacking)
-              Container(
-                width: player.width.w,
-                height: player.height.h,
-                decoration: BoxDecoration(
-                  color: Colors.yellow.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.white.withOpacity(0.9), width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.32),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
                 ),
-              ).animate().scale(duration: 200.ms),
-          ],
-        ),
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.shield_rounded, color: Colors.white, size: 18.sp),
+                Text(
+                  'HÉROE',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 8.sp,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (player.isAttacking)
+            Positioned(
+              top: -1.5.h,
+              right: -1.8.w,
+              child: Container(
+                width: 4.2.w,
+                height: 2.2.h,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFBBF24),
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFF59E0B).withOpacity(0.8),
+                      blurRadius: 8,
+                      spreadRadius: 1.5,
+                    ),
+                  ],
+                ),
+              ).animate().fadeIn(duration: 100.ms).scale(duration: 180.ms),
+            ),
+        ],
       ),
     );
   }
@@ -225,20 +239,25 @@ class _EnhancedGameCanvasWidgetState extends State<EnhancedGameCanvasWidget>
         width: enemy.width.w,
         height: enemy.height.h,
         decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(6),
+          gradient: const LinearGradient(
+            colors: [Color(0xFFEF4444), Color(0xFF7F1D1D)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.black.withOpacity(0.8), width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 3,
-              offset: const Offset(0, 1),
+              color: Colors.black.withOpacity(0.35),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Icon(
-          Icons.bug_report,
+          Icons.android_rounded,
           color: Colors.white,
-          size: 16.sp,
+          size: 14.sp,
         ),
       ),
     );
