@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -19,6 +21,7 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   bool _showQuickAccess = false;
+  Timer? _quickAccessTimer;
 
   void _handleIniciarJuego() {
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
@@ -33,6 +36,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   }
 
   void _toggleQuickAccess() {
+    _quickAccessTimer?.cancel();
+
     setState(() {
       _showQuickAccess = !_showQuickAccess;
     });
@@ -46,7 +51,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       );
 
       // Auto-hide after 3 seconds
-      Future.delayed(const Duration(seconds: 3), () {
+      _quickAccessTimer = Timer(const Duration(seconds: 3), () {
         if (mounted) {
           setState(() {
             _showQuickAccess = false;
@@ -54,6 +59,12 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
         }
       });
     }
+  }
+
+  @override
+  void dispose() {
+    _quickAccessTimer?.cancel();
+    super.dispose();
   }
 
   void _handleQuickAccess() {
