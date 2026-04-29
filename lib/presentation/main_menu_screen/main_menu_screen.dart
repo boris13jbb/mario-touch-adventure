@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
@@ -18,7 +19,6 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   bool _showQuickAccess = false;
-  static const int _lastPlayedLevel = 12;
 
   void _handleIniciarJuego() {
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
@@ -57,11 +57,18 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   }
 
   void _handleQuickAccess() {
+    final gameState = context.read<GameState>();
+    if (!gameState.isGameActive) {
+      gameState.startNewGame();
+    }
     Navigator.pushNamed(context, '/enhanced-gameplay-screen');
   }
 
   @override
   Widget build(BuildContext context) {
+    final gameState = context.watch<GameState>();
+    final int lastPlayedLevel = gameState.currentLevel;
+
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -182,7 +189,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                           ),
                                           SizedBox(width: 2.w),
                                           Text(
-                                            'Último Nivel ($_lastPlayedLevel)',
+                                            'Último Nivel ($lastPlayedLevel)',
                                             style: AppTheme.lightTheme.textTheme
                                                 .titleMedium
                                                 ?.copyWith(
