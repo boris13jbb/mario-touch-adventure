@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
+import '../../core/game_state.dart';
 import './widgets/animated_background_widget.dart';
 import './widgets/audio_controls_widget.dart';
 import './widgets/footer_widget.dart';
