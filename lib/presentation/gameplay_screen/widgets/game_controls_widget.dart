@@ -122,15 +122,13 @@ class _GameControlsWidgetState extends State<GameControlsWidget> {
           Positioned(
             top: 0,
             child: GestureDetector(
-              onTapDown: (_) => _handleMovement('up'),
-              onTapUp: (_) => _stopMovement(),
-              onTapCancel: () => _stopMovement(),
+              onTap: _handleJump,
               child: Container(
                 width: 8.w,
                 height: 8.w,
                 decoration: BoxDecoration(
-                  color: _currentDirection == 'up'
-                      ? AppTheme.lightTheme.primaryColor.withAlpha((0.8 * 255).round())
+                  color: _isJumpPressed
+                      ? AppTheme.successLight.withAlpha((0.85 * 255).round())
                       : Colors.white.withAlpha((0.3 * 255).round()),
                   shape: BoxShape.circle,
                 ),

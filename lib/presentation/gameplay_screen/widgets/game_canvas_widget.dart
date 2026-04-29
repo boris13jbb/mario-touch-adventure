@@ -176,7 +176,9 @@ class _GameCanvasWidgetState extends State<GameCanvasWidget>
   }
 
   Widget _buildPlayer() {
-    double jumpOffset = _isPlayerOnGround ? 0 : -30 * _playerAnimation.value;
+    // Positive bottom offset lifts the player visually upward while jumping.
+    final double jumpOffset =
+        _isPlayerOnGround ? 0 : 30 * _playerAnimation.value;
 
     return AnimatedBuilder(
         animation: _playerAnimation,
